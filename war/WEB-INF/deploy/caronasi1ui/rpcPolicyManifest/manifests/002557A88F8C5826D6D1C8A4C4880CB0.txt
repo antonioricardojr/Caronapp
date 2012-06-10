@@ -1,2 +1,0 @@
-serviceClass: com.caaina.client.GreetingService
-path: 6403ED543BD1702662ECBD5EDB721468.gwt.rpc
