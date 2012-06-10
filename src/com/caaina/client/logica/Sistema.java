@@ -214,18 +214,8 @@ public class Sistema {
 
 		throw new AtributoInvalidoException("Atributo inexistente");
 	}
-
-	/**
-	 * Método que retorna carona se esta existir
-	 * @param idSessao
-	 * @param origem
-	 * @param destino
-	 * @return caronasLocalizadas
-	 * @throws Exception
-	 */
-	public String localizarCarona(String idSessao, String origem, String destino)
-			throws Exception {
-
+	
+	public List<String> localizarCaronasLista(String idSessao, String origem, String destino) throws OrigemInvalidaException, DestinoInvalidoException{
 		if (origem == null || contemCharInvalidos(origem)) {
 			throw new OrigemInvalidaException();
 		}
@@ -266,8 +256,21 @@ public class Sistema {
 			}
 
 		}
+		return caronasLocalizadas;
+	}
 
-		return caronasLocalizadas.toString().replace("[", "{")
+	/**
+	 * Método que retorna carona se esta existir
+	 * @param idSessao
+	 * @param origem
+	 * @param destino
+	 * @return caronasLocalizadas
+	 * @throws Exception
+	 */
+	public String localizarCarona(String idSessao, String origem, String destino)
+			throws Exception {
+
+		return localizarCaronasLista(idSessao, origem, destino).toString().replace("[", "{")
 				.replace("]", "}").replace(" ", "");
 	}
 

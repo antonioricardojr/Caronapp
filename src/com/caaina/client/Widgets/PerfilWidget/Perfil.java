@@ -3,6 +3,7 @@ package com.caaina.client.Widgets.PerfilWidget;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.caaina.client.Widgets.BuscarCarona.BuscarCarona;
 import com.caaina.client.Widgets.CadastraNovaCarona.CadastraNovaCarona;
 import com.caaina.client.Widgets.LogonWidget.Logon;
 import com.caaina.client.Widgets.MinhasCaronasWidget.MinhasCaronas;
@@ -37,11 +38,13 @@ public class Perfil extends Composite {
 	MenuBar menuBar;
 	@UiField
 	VerticalPanel gridPerfil;
+	@UiField MenuItem buscarCaronasItem;
 	final int INDEX_GRID = 1;
 	final int INDEX_CADASTRA_NOVA_CARONA = 2;
 	private CadastraNovaCarona cadastraNovaCarona;
 	private TelaPerfilInicial telaPerfilInicial;
 	private MinhasCaronas minhasCaronas;
+	private BuscarCarona buscarCarona;
 	private Widget tela;
 	private String login;
 	private List<MenuItem> menuItens;
@@ -113,6 +116,20 @@ public class Perfil extends Composite {
 				mostraTela(minhasCaronas);
 			}
 
+		});
+		
+		//Adiciona o comando no item Buscar Caronas para chamar a tela com a busca
+		
+		buscarCaronasItem.setCommand(new Command(){
+
+			@Override
+			public void execute() {
+				limpaTela();
+				buscarCarona = new BuscarCarona(Perfil.this);
+				buscarCaronasItem.setEnabled(true);
+				mostraTela(buscarCarona);	
+			}
+			
 		});
 
 	}

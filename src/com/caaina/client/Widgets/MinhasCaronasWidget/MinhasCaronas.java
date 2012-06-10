@@ -2,7 +2,7 @@ package com.caaina.client.Widgets.MinhasCaronasWidget;
 
 import java.util.List;
 
-import com.caaina.client.Widgets.CaronaWidget.Carona;
+import com.caaina.client.Widgets.CaronaWidget.CaronaWidget;
 import com.caaina.client.Widgets.PerfilWidget.Perfil;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -42,7 +42,7 @@ public class MinhasCaronas extends Composite {
 			com.caaina.client.logica.Carona carona = null;
 			try {
 				carona = getPerfil().getSistema().getCarona(c);
-				Carona caronaLinha = new Carona(carona.getOrigem(), carona.getDestino(), carona.getData(), carona.getHora(), ""+carona.getVagas());
+				CaronaWidget caronaLinha = new CaronaWidget(carona.getOrigem(), carona.getDestino(), carona.getData(), carona.getHora(), ""+carona.getVagas());
 				painelCaronas.add(caronaLinha);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

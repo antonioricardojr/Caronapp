@@ -17,6 +17,8 @@
 					<g:MenuItemSeparator/>
 					<g:MenuItem text="Cadastrar Nova Carona" ui:field="cadastrarNovaCaronaItem"/>
 					<g:MenuItemSeparator/>
+					<g:MenuItem text="Buscar Caronas" ui:field="buscarCaronasItem"/>
+					<g:MenuItemSeparator/>
 				</g:MenuBar>
 		</g:VerticalPanel>
 	</g:HTMLPanel>

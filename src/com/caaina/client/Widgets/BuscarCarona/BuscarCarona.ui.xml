@@ -1,0 +1,18 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:p1="urn:import:com.google.gwt.user.datepicker.client">
+	<ui:style>
+		
+	</ui:style>
+	<g:HTMLPanel>
+		<g:VerticalPanel ui:field="painelCentral" width="477px">
+			<g:FlowPanel ui:field="painelBuscar" width="527px">
+				<g:TextBox ui:field="campoOrigem" text="Origem da Carona" width="150px"/>
+				<g:TextBox ui:field="campoDestino" text="Destino da Carona" width="150"/>
+				<g:TextBox ui:field="campoData" width="86px" text="Data"/>
+				<g:Button width="63px" text="Buscar" ui:field="botaoBuscar"/>
+			</g:FlowPanel>
+		</g:VerticalPanel>
+		<g:VerticalPanel ui:field="painelCaronas"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 
