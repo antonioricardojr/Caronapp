@@ -41,6 +41,7 @@ public class Logon extends Composite {
 		setSistema(sistema);
 		try {
 			sistema.criarUsuario("admin", "admin", "admin", "admin", "admin@admin.com");
+			sistema.criarUsuario("si1", "si1si1", "admino", "admino", "admino@admin.com");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
