@@ -1,0 +1,26 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		
+	</ui:style>
+	<g:HTMLPanel>
+		<g:Grid width="440px" height="265px" ui:field="gridCentral">
+			<g:row>
+				<g:customCell>
+					<g:TextBox alignment="CENTER" width="460px" ui:field="caixaLogin" text="Login"/>
+				</g:customCell>
+			</g:row>
+			<g:row>
+				<g:customCell>
+					<g:PasswordTextBox width="460px" ui:field="caixaSenha" text="senha" textAlignment="ALIGN_CENTER"/>
+				</g:customCell>
+			</g:row>
+			<g:row>
+				<g:customCell>
+					<g:Button ui:field="confirma" width="470px" text="Login"/>
+				</g:customCell>
+			</g:row>
+		</g:Grid>
+	</g:HTMLPanel>
+</ui:UiBinder> 

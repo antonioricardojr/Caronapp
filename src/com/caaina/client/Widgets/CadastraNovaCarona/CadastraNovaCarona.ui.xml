@@ -1,0 +1,38 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:p1="urn:import:com.google.gwt.user.datepicker.client">
+	<ui:style>
+		
+	</ui:style>
+	<g:HTMLPanel styleName="cadastraNovaCarona">
+		<g:VerticalPanel width="664px" height="458px" ui:field="campo">
+			<g:HorizontalPanel width="644px" height="66px" ui:field="linhaOrigem">
+			<g:Label text="Origem da Carona:" width="119px"/>
+			<g:TextBox width="515px" maxLength="100" ui:field="campoOrigem"/>
+		</g:HorizontalPanel>
+			<g:HorizontalPanel height="66px" width="644px" ui:field="linhaDestino">
+				<g:Label text="Destino da Carona:" width="119px"/>
+				<g:TextBox maxLength="100" width="515px" ui:field="campoDestino"/>
+			</g:HorizontalPanel>
+			<g:HorizontalPanel>
+				<g:VerticalPanel ui:field="linhaData">
+				<g:Label text="Data da carona:"/>
+				<p1:DateBox ui:field="campoData"/>
+			</g:VerticalPanel>
+				<g:SimplePanel width="124px"/>
+				<g:VerticalPanel ui:field="linhaCarona">
+					<g:Label text="Hora da Carona:"/>
+					<g:TextBox maxLength="5" ui:field="campoHora" text="00:00" textAlignment="ALIGN_CENTER" width="90px"/>
+				</g:VerticalPanel>
+				<g:SimplePanel width="124px"/>
+				<g:VerticalPanel ui:field="linhaVagas">
+					<g:Label text="Vagas da Carona:"/>
+					<g:TextBox width="97px" ui:field="campoVagas"/>
+				</g:VerticalPanel>
+			</g:HorizontalPanel>
+			<g:Cell verticalAlignment="ALIGN_MIDDLE">
+				<g:Button ui:field="botaoCadastrar" text="Cadastrar Carona" width="659px"></g:Button>
+			</g:Cell>
+		</g:VerticalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 
