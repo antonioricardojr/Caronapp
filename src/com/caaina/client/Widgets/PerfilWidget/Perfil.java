@@ -7,6 +7,7 @@ import com.caaina.client.Widgets.BuscarCarona.BuscarCarona;
 import com.caaina.client.Widgets.CadastraNovaCarona.CadastraNovaCarona;
 import com.caaina.client.Widgets.LogonWidget.Logon;
 import com.caaina.client.Widgets.MinhasCaronasWidget.MinhasCaronas;
+import com.caaina.client.Widgets.Principal.Principal;
 import com.caaina.client.Widgets.TelaPerfilInicial.TelaPerfilInicial;
 import com.caaina.client.logica.Sessao;
 import com.caaina.client.logica.Sistema;
@@ -85,8 +86,11 @@ public class Perfil extends Composite {
 			@Override
 			public void execute() {
 				RootPanel.get("perfil").clear();
-				Logon l = new Logon();
-				RootPanel.get("logon").add(l);
+				RootPanel.get("principal").clear();
+				
+				Principal principal = new Principal(Perfil.this.getSistema());
+				RootPanel.get("principal").add(principal);
+				
 			}
 		});
 

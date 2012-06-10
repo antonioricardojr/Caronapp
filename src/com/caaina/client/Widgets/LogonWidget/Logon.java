@@ -35,10 +35,10 @@ public class Logon extends Composite {
 	interface LogonUiBinder extends UiBinder<Widget, Logon> {
 	}
 
-	public Logon() {
+	public Logon(Sistema sistema) {
 		initWidget(uiBinder.createAndBindUi(this));
 		setStyleName("logon");
-		sistema = new Sistema();
+		setSistema(sistema);
 		try {
 			sistema.criarUsuario("admin", "admin", "admin", "admin", "admin@admin.com");
 		} catch (Exception e) {
@@ -47,15 +47,24 @@ public class Logon extends Composite {
 		}
 	}
 
+	public Sistema getSistema() {
+		return sistema;
+	}
+
+	public void setSistema(Sistema sistema) {
+		this.sistema = sistema;
+	}
+
 	@UiHandler("confirma")
 	void onConfirmaClick(ClickEvent event){
 		String login = caixaLogin.getText();
 		String senha = caixaSenha.getText();
 		logar(login, senha);
 		if(sessao!=null){
+			RootPanel.get("principal").clear();
 			Perfil p = new Perfil(sessao, sistema);
-			RootPanel.get("logon").clear();
 			RootPanel.get("perfil").add(p);
+			
 		}
 	}
 	

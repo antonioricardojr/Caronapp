@@ -1,0 +1,17 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		
+	</ui:style>
+	<g:HTMLPanel>
+		<g:VerticalPanel height="243px" width="270px">
+			<g:TextBox ui:field="campoLogin" text="Login" width="170px"/>
+			<g:TextBox ui:field="campoNome" text="Nome de usuário" width="170px"/>
+			<g:TextBox ui:field="campoEndereco" text="Endereço" width="170px"/>
+			<g:TextBox ui:field="campoEmail" text="E-mail" width="170px"/>
+			<g:PasswordTextBox ui:field="campoSenha" text="Senha" width="170px"/>
+			<g:Button width="85px" ui:field="botaoCadastrar" text="Cadastrar"/>
+		</g:VerticalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 
