@@ -48,7 +48,7 @@ public class MinhasCaronas extends Composite {
 			com.caaina.client.logica.Carona carona = null;
 			try {
 				carona = getPerfil().getSistema().getCarona(c);
-				CaronaWidget caronaLinha = new CaronaWidget(carona.getOrigem(), carona.getDestino(), carona.getData(), carona.getHora(), ""+carona.getVagas(), carona.getId(), "minhas caronas");
+				CaronaWidget caronaLinha = new CaronaWidget(this, carona.getOrigem(), carona.getDestino(), carona.getData(), carona.getHora(), ""+carona.getVagas(), "minhas caronas", carona.getId());
 				painelCaronas.add(caronaLinha);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

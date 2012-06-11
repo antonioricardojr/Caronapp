@@ -1,7 +1,9 @@
 package com.caaina.client.Widgets.CaronaWidget;
 
+import com.caaina.client.Widgets.BuscarCarona.BuscarCarona;
 import com.caaina.client.Widgets.PerfilWidget.Perfil;
 import com.caaina.client.Widgets.SolicitarCarona.SolicitarCarona;
+import com.caaina.client.logica.Usuario;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
@@ -28,11 +30,12 @@ public class CaronaWidget extends Composite {
 	@UiField VerticalPanel painelCarona;
 	private String contexto;
 	private String idCarona;
+	private Widget pai;
 
 	interface CaronaWidgetUiBinder extends UiBinder<Widget, CaronaWidget> {
 	}
 
-	public CaronaWidget(String origem, String destino, String data, String hora, String vagas,String contexto, String idCarona) {
+	public CaronaWidget(Widget pai, String origem, String destino, String data, String hora, String vagas,String contexto, String idCarona) {
 		initWidget(uiBinder.createAndBindUi(this));
 		this.origem.setText(origem);
 		this.destino.setText(destino);
@@ -41,6 +44,7 @@ public class CaronaWidget extends Composite {
 		this.vagas.setText(vagas);
 		setContexto(contexto);
 		setIdCarona(idCarona);
+		setPai(pai);
 		}
 
 	public String getContexto() {
@@ -49,6 +53,10 @@ public class CaronaWidget extends Composite {
 
 	public void setContexto(String contexto) {
 		this.contexto = contexto;
+		if(contexto.equals("buscar caronas")){
+			botaoEditar.setText("Solicitar vaga");
+		}
+				
 	}
 
 	@UiHandler("botaoEditar")
@@ -59,16 +67,15 @@ public class CaronaWidget extends Composite {
 	}
 
 	private void contextoBuscarCarona() {
-		botaoEditar.setText("Solicitar vaga");
-		SolicitarCarona solicitar = new SolicitarCarona(getIdCarona());
+		SolicitarCarona solicitar = new SolicitarCarona(getIdCarona(), this);
 		painelCarona.add(solicitar);
 	}
 	
 	public String respostaContextoBuscarCarona(String resposta, String idCarona){
 		if(resposta.equals("sim")){
-			Perfil perfil = (Perfil) this.getParent();
+			BuscarCarona buscar = (BuscarCarona) this.getPai();
 			try {
-				perfil.getSistema().solicitarVaga(perfil.getSessao().getId(), getIdCarona());
+				buscar.getPerfil().getSistema().solicitarVaga(buscar.getPerfil().getSessao().getId(), getIdCarona());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -84,5 +91,21 @@ public class CaronaWidget extends Composite {
 
 	public void setIdCarona(String idCarona) {
 		this.idCarona = idCarona;
+	}
+
+	public Widget getPai() {
+		return pai;
+	}
+
+	public void setPai(Widget pai) {
+		this.pai = pai;
+	}
+	
+	public boolean solicitada(){
+		if(contexto.equals("buscar caronas")){
+			BuscarCarona buscar = (BuscarCarona) getPai();
+		}
+		return false;
+		
 	}
 }

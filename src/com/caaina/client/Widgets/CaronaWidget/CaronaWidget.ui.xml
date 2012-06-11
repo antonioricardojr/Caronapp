@@ -5,8 +5,9 @@
 		
 	</ui:style>
 	<g:HTMLPanel>
-		<g:VerticalPanel ui:field="painelCarona">
-			<g:HorizontalPanel ui:field="carona" width="635px" verticalAlignment="ALIGN_MIDDLE">
+		<g:VerticalPanel ui:field="painelCarona" horizontalAlignment="ALIGN_CENTER">
+			<g:Cell width="50">
+				<g:HorizontalPanel ui:field="carona" width="857px" verticalAlignment="ALIGN_MIDDLE">
 			<g:Cell horizontalAlignment="ALIGN_CENTER">
 				<g:Label text="Origem" ui:field="origem"/>
 			</g:Cell>
@@ -22,8 +23,9 @@
 			<g:Cell horizontalAlignment="ALIGN_CENTER">
 				<g:Label text="Vagas" ui:field="vagas" width="30"/>
 			</g:Cell>
-			<g:Button width="92px" ui:field="botaoEditar"/>
+			<g:Button width="158px" ui:field="botaoEditar"/>
 		</g:HorizontalPanel>
+			</g:Cell>
 		</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

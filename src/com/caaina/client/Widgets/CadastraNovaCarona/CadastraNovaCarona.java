@@ -61,7 +61,6 @@ public class CadastraNovaCarona extends Composite {
 		String vagas = campoVagas.getText();
 		@SuppressWarnings("deprecation")
 		String dataS = "" + data.getDate()+ "/" + "0"+(data.getMonth()+1) + "/" + (data.getYear()+1900);
-		System.out.println(dataS);
 		try {
 			getPerfil().getSistema().cadastrarCarona(getPerfil().getSessao().getId(), origem, destino, dataS, hora, vagas);
 		} catch (Exception e) {

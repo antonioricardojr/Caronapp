@@ -12,6 +12,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.datepicker.client.DateBox;
+import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -60,17 +61,31 @@ public class BuscarCarona extends Composite {
 			for(String c : caronas){
 				Carona carona = getPerfil().getSistema().getCarona(c);
 				if(data.equals("")){
-					CaronaWidget linahCarona = new CaronaWidget(carona.getOrigem(), carona.getDestino(), carona.getData(), carona.getHora(), "" + carona.getVagas(),carona.getId(), "buscar caronas");
+					CaronaWidget linahCarona = new CaronaWidget(this,carona.getOrigem(), carona.getDestino(), carona.getData(), carona.getHora(), "" + carona.getVagas(), "buscar caronas",carona.getId());
 					painelCaronas.add(linahCarona);
+					painelCaronas.setHorizontalAlignment(DockPanel.ALIGN_CENTER);
 					
 				}else if(carona.getData().equals(data)){
-					CaronaWidget linahCarona = new CaronaWidget(carona.getOrigem(), carona.getDestino(), carona.getData(), carona.getHora(), "" + carona.getVagas(), carona.getId(), "buscar caronas");
+					CaronaWidget linahCarona = new CaronaWidget(this,carona.getOrigem(), carona.getDestino(), carona.getData(), carona.getHora(), "" + carona.getVagas(), "buscar caronas",carona.getId());
 					painelCaronas.add(linahCarona);
+					painelCaronas.setHorizontalAlignment(DockPanel.ALIGN_CENTER);
 				}
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	@UiHandler("campoOrigem")
+	void onCampoOrigemClick(ClickEvent event) {
+		campoOrigem.setText("");
+	}
+	@UiHandler("campoDestino")
+	void onCampoDestinoClick(ClickEvent event) {
+		campoDestino.setText("");
+	}
+	@UiHandler("campoData")
+	void onCampoDataClick(ClickEvent event) {
+		campoData.setText("");
 	}
 }
