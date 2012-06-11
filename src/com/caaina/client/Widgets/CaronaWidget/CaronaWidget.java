@@ -28,6 +28,7 @@ public class CaronaWidget extends Composite {
 	@UiField Button botaoEditar;
 	@UiField HorizontalPanel carona;
 	@UiField VerticalPanel painelCarona;
+	@UiField Button botaoDonoDaCarona;
 	private String contexto;
 	private String idCarona;
 	private Widget pai;
@@ -35,13 +36,14 @@ public class CaronaWidget extends Composite {
 	interface CaronaWidgetUiBinder extends UiBinder<Widget, CaronaWidget> {
 	}
 
-	public CaronaWidget(Widget pai, String origem, String destino, String data, String hora, String vagas,String contexto, String idCarona) {
+	public CaronaWidget(Widget pai, String donoDaCarona, String origem, String destino, String data, String hora, String vagas,String contexto, String idCarona) {
 		initWidget(uiBinder.createAndBindUi(this));
-		this.origem.setText(origem);
-		this.destino.setText(destino);
-		this.data.setText(data);
-		this.hora.setText(hora);
-		this.vagas.setText(vagas);
+		this.origem.setText("Origem da Carona: " + origem);
+		this.destino.setText("Destino da Carona: " + destino);
+		this.data.setText("Data da Carona: " + data);
+		this.hora.setText("Hora da Carona: "+ hora);
+		this.vagas.setText("Vagas restantes: " + vagas);
+		this.botaoDonoDaCarona.setText("Carona de: " + donoDaCarona);
 		setContexto(contexto);
 		setIdCarona(idCarona);
 		setPai(pai);
@@ -63,7 +65,13 @@ public class CaronaWidget extends Composite {
 	void onBotaoEditarClick(ClickEvent event) {
 		if(getContexto().equals("buscar caronas")){
 			contextoBuscarCarona();
+		}else if(getContexto().equals("minhas caronas")){
+			contextoMinhasCaronas();
 		}
+	}
+
+	private void contextoMinhasCaronas() {
+		botaoEditar.setVisible(false);
 	}
 
 	private void contextoBuscarCarona() {

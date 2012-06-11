@@ -13,6 +13,6 @@
 				<g:Button width="63px" text="Buscar" ui:field="botaoBuscar"/>
 			</g:FlowPanel>
 		</g:VerticalPanel>
-		<g:VerticalPanel ui:field="painelCaronas" spacing="2"/>
+		<g:VerticalPanel ui:field="painelCaronas" spacing="2" horizontalAlignment="ALIGN_CENTER"/>
 	</g:HTMLPanel>
 </ui:UiBinder> 

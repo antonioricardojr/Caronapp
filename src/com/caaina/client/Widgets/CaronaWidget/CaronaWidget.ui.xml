@@ -6,22 +6,23 @@
 	</ui:style>
 	<g:HTMLPanel>
 		<g:VerticalPanel ui:field="painelCarona" horizontalAlignment="ALIGN_CENTER">
-			<g:Cell width="50">
+			<g:Cell width="">
 				<g:HorizontalPanel ui:field="carona" width="857px" verticalAlignment="ALIGN_MIDDLE">
+					<g:Button width="136px" ui:field="botaoDonoDaCarona"/>
 			<g:Cell horizontalAlignment="ALIGN_CENTER">
-				<g:Label text="Origem" ui:field="origem"/>
+				<g:Label text="Origem" ui:field="origem" width="95px"/>
 			</g:Cell>
 			<g:Cell horizontalAlignment="ALIGN_CENTER">
-				<g:Label text="Destino" ui:field="destino"/>
+				<g:Label text="Destino" ui:field="destino" width="94px"/>
 			</g:Cell>
 			<g:Cell horizontalAlignment="ALIGN_CENTER">
-				<g:Label text="Data" ui:field="data"/>
+				<g:Label text="Data" ui:field="data" width="70px"/>
 			</g:Cell>
 			<g:Cell horizontalAlignment="ALIGN_CENTER">
-				<g:Label text="Hora" ui:field="hora" width="24px"/>
+				<g:Label text="Hora" ui:field="hora" width="136px"/>
 			</g:Cell>
 			<g:Cell horizontalAlignment="ALIGN_CENTER">
-				<g:Label text="Vagas" ui:field="vagas" width="30"/>
+				<g:Label text="Vagas" ui:field="vagas" width="70px"/>
 			</g:Cell>
 			<g:Button width="158px" ui:field="botaoEditar"/>
 		</g:HorizontalPanel>

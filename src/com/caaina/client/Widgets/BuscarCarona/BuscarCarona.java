@@ -61,12 +61,12 @@ public class BuscarCarona extends Composite {
 			for(String c : caronas){
 				Carona carona = getPerfil().getSistema().getCarona(c);
 				if(data.equals("")){
-					CaronaWidget linahCarona = new CaronaWidget(this,carona.getOrigem(), carona.getDestino(), carona.getData(), carona.getHora(), "" + carona.getVagas(), "buscar caronas",carona.getId());
+					CaronaWidget linahCarona = new CaronaWidget(this,carona.getCriador(),carona.getOrigem(), carona.getDestino(), carona.getData(), carona.getHora(), "" + carona.getVagas(), "buscar caronas",carona.getId());
 					painelCaronas.add(linahCarona);
 					painelCaronas.setHorizontalAlignment(DockPanel.ALIGN_CENTER);
 					
 				}else if(carona.getData().equals(data)){
-					CaronaWidget linahCarona = new CaronaWidget(this,carona.getOrigem(), carona.getDestino(), carona.getData(), carona.getHora(), "" + carona.getVagas(), "buscar caronas",carona.getId());
+					CaronaWidget linahCarona = new CaronaWidget(this,carona.getCriador(),carona.getOrigem(), carona.getDestino(), carona.getData(), carona.getHora(), "" + carona.getVagas(), "buscar caronas",carona.getId());
 					painelCaronas.add(linahCarona);
 					painelCaronas.setHorizontalAlignment(DockPanel.ALIGN_CENTER);
 				}
