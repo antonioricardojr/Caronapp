@@ -1,7 +1,12 @@
 package com.caaina.client.facede;
 
-
+import com.caaina.client.excecoes.DataInvalidaException;
+import com.caaina.client.excecoes.DestinoInvalidoException;
+import com.caaina.client.excecoes.OrigemInvalidaException;
 import com.caaina.client.logica.Sistema;
+
+
+
 
 
 /**
@@ -15,7 +20,7 @@ public class Si1ProjectFacade {
 	Sistema S1 = new Sistema();
 
 	public void zerarSistema() {
-		//S1.zerarSistema();
+		S1.zerarSistema();
 		S1 = new Sistema();
 	}
 
@@ -72,12 +77,29 @@ public class Si1ProjectFacade {
 		return S1.localizarCarona(idSessao, origem, destino);
 	}
 
+	public String localizarCaronaMunicipal(String idSessao, String cidade, String origem,
+			String destino) throws Exception {
+
+		return S1.localizarCaronaMunicipal(idSessao,cidade, origem, destino);
+	}
+	
+	public String localizarCaronaMunicipal(String idSessao, String cidade) throws Exception {
+
+		return S1.localizarCaronaMunicipal(idSessao,cidade,"","");
+	}
+	
 	public String cadastrarCarona(String idSessao, String origem,
 			String destino, String data, String hora, String vagas)
 			throws Exception {
 		return S1.cadastrarCarona(idSessao, origem, destino, data, hora, vagas).getId();
 	}
 
+	public String cadastrarCaronaMunicipal(String idSessao, String origem,
+			String destino, String cidade, String data, String hora, String vagas)
+			throws Exception {
+		return S1.cadastrarCaronaMunicipal(idSessao, origem, destino, cidade, data, hora, vagas).getId();
+	}
+	
 	public String getAtributoCarona(String idCarona, String atributo)
 			throws Exception {
 
@@ -128,26 +150,36 @@ public class Si1ProjectFacade {
 		return S1.getSolicitacoesConfirmadas(idSessao,idCarona);
 	}
 	
-	public String getSolicitacoesPendentes(String idCarona) throws Exception{
-		return S1.getSolicitacoesPendentes(idCarona);
+	public String getSolicitacoesPendentes(String idSessao,String idCarona) throws Exception{
+		return S1.getSolicitacoesPendentes(idSessao,idCarona);
 	}
 	
 	public String getPontosSugeridos(String idSessao, String idCarona) throws Exception{
 		return S1.getPontosSugeridos(idSessao,idCarona);
 	}
 	
+	public String getPontosEncontro(String idSessao, String idCarona) throws Exception{
+		return S1.getPontosEncontro(idSessao,idCarona);
+	}
+	
 	public String reviewVagaEmCarona(String idSessao, String idCarona, String loginCaroneiro, String review) throws Exception{
-		return S1.reviewVagaEmCarona(idSessao,idCarona, loginCaroneiro,review).getId();
+		return S1.reviewVagaEmCarona(idSessao,idCarona, loginCaroneiro,review);
 	}
 	
 	public void reviewCarona(String idSessao, String idCarona, String review) throws Exception{
 		S1.reviewCarona(idSessao, idCarona, review);
 	}
 	
+	public String cadastrarInteresse(String idSessao, String origem, String destino, String data, String horaInicio, String horaFim) throws OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException{
+		return S1.cadastrarInteresse(idSessao, origem, destino, data, horaInicio, horaFim).toString();
+	}
+	
+	public String verificarMensagensPerfil(String idSessao) throws Exception{
+		return S1.verificarMensagensPerfil(idSessao);		
+	}
 	
 	public void reiniciarSistema() throws Exception{
-		//S1.zerarSistema();
-		
+		S1.zerarSistema();		
 	}
 	
 	public void encerrarSistema() throws Exception {

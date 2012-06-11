@@ -42,14 +42,6 @@ public class Sessao {
 		}
 		this.id = id;
 	}
-	
-	public boolean isEmpty(){
-		if(id.equals("-1")){
-			return true;
-		}else{
-			return false;
-		}
-	}
 
 
 	

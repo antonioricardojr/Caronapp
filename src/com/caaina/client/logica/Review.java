@@ -2,6 +2,8 @@ package com.caaina.client.logica;
 
 import com.caaina.client.excecoes.ReviewInvalidaException;
 
+
+
 public class Review {
 	
 	private String id;

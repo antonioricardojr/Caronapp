@@ -5,14 +5,14 @@ import java.util.List;
 public class VisualizadorDePerfil {
 
 	private Usuario usuario;
-	private List<Carona> caronas;
+	private List<CaronaAbstrata> caronas;
 
-	public VisualizadorDePerfil(Usuario usuario, List<Carona> caronas) {
+	public VisualizadorDePerfil(Usuario usuario, List<CaronaAbstrata> caronas) {
 		setUsuario(usuario);
 		setCaronas(caronas);
 	}
 
-	private void setCaronas(List<Carona> caronas) {
+	private void setCaronas(List<CaronaAbstrata> caronas) {
 		this.caronas = caronas;
 	}
 
@@ -40,7 +40,7 @@ public class VisualizadorDePerfil {
 	public String getHistoricoDeCaronas() {
 
 		if (usuario.getCaronasOferecidas().size() == 0) {
-			return "";
+			return "[]";
 		}
 
 		String historicoDeCaronas = "[";
@@ -62,7 +62,7 @@ public class VisualizadorDePerfil {
 
 		String saida = "";
 		if (usuario.getCaronasComoCaroneiro().size() == 0) {
-			return "";
+			return "[]";
 		} else {
 			for (String c : usuario.getCaronasComoCaroneiro()) {
 				saida += c + ",";
@@ -74,35 +74,49 @@ public class VisualizadorDePerfil {
 	}
 
 	public String getCaronasSegurasETranquilas() {
-		// TODO Auto-generated method stub
-		return "0";
+		int saida = 0;
+		if (usuario.getCaronasOferecidas().size() == 0) {
+			return saida+"";
+		} else {
+			for (CaronaAbstrata c : caronas) {
+				for(Review rev : c.getReviews()){
+					if(rev.getUsuario().equals(usuario.getLogin())){
+						if(rev.getReview().equals("segura e tranquila")){
+							saida+=1;
+						}
+					}	
+				}				
+			}
+		}
+		return saida+"";
 	}
 
 	public String getCaronasQueNaoFuncionaram() {
-		// TODO Auto-generated method stub
-		return "0";
+		int saida = 0;
+		if (usuario.getCaronasOferecidas().size() == 0) {
+			return saida+"";
+		} else {
+			for (CaronaAbstrata c : caronas) {
+				for(Review rev : c.getReviews()){
+					if(rev.getUsuario().equals(usuario.getLogin())){
+						if(rev.getReview().equals("não funcionou")){
+							saida+=1;
+						}
+					}	
+				}				
+			}
+		}
+		return saida+"";
 	}
 
 	public String getFaltasEmVagasDeCaronas() {
 
-		int faltas = 0;
-		for (Carona c : caronas) {
-			for (Review r : c.getReviews()) {
-				System.out.println(r.getReview() + r.getUsuario());
-
-				if (r.getReview().equals("faltou") && r.getUsuario().equals(this.usuario.getLogin())) {
-
-					faltas++;
-				}
-			}
-		}
-
-		return "" + faltas;
+		return usuario.getFaltas()+"";
 	}
 
 	public String getPresencasEmVagasDeCaronas() {
-		// TODO Auto-generated method stub
-		return "0";
+
+		return usuario.getPresencas()+"";
 	}
 
 	public List<String> getAmigos() {

@@ -3,13 +3,14 @@ package com.caaina.client.logica;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 import com.caaina.client.excecoes.AtributoInvalidoException;
-import com.caaina.client.excecoes.XMLNaoGeradaException;
+
+//import org.jdom2.Element;
 
 
 
+//import xml.FactoryXml;
+//import xml.Xml;
 
 
 /**
@@ -28,13 +29,15 @@ public class Usuario {
 
 	private List<String> caronasOferecidas;
 	private List<String> caronasComoCaroneiro;
-
+	private int faltas;
+	private int presencas;
 	private List<String> caronas;
 
 	private List<String> amigos;
 	private List<String> mensagens;
 	
-	//private Xml xmlCreator;
+//	private Xml xmlCreator;
+	
 
 	public Usuario(String login, String senha, String nome, String endereco,
 			String email) throws Exception {
@@ -44,14 +47,14 @@ public class Usuario {
 		setNome(nome);
 		setEndereco(endereco);
 		setEmail(email);
-
+		faltas = 0;
 		caronasOferecidas = new ArrayList<String>();
 		caronasComoCaroneiro = new ArrayList<String>();
-
+		mensagens = new ArrayList<String>();
 		setCaronas(new ArrayList<String>());
 
 		setAmigos(new ArrayList<String>());
-	//	this.xmlCreator = new FactoryXml("Xml usuario");
+//		this.xmlCreator = new FactoryXml("Xml usuario");
 	}
 
 	public String getLogin() {
@@ -127,8 +130,16 @@ public class Usuario {
 		this.endereco = endereco;
 	}
 
+	public int getFaltas() {
+		return faltas;
+	}
+
+	public void addFalta() {
+		this.faltas +=1;
+	}
+	
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	public void setEmail(String email) throws Exception {
@@ -200,19 +211,19 @@ public class Usuario {
 		}
 	}
 
-	public void removeCarona(Carona c) {
+	public void removeCarona(CaronaAbstrata c) {
 		if (c != null) {
 			caronas.remove(c);
 		}
 	}
 	
-	//public void geraXml(){
-	//	this.xmlCreator.geraXML(this);
-	//}
+//	public void geraXml(){
+//		this.xmlCreator.geraXML(this);
+//	}
 	
-	//public Element getXml() throws XMLNaoGeradaException{
-	//	return this.xmlCreator.getRaiz();
-	//}
+//	public Element getXml() throws XMLNaoGeradaException{
+//		return this.xmlCreator.getRaiz();
+//	}
 	
 	public void setCaronasComoCaroneiro(List<String> lista){
 		caronasComoCaroneiro = lista;
@@ -224,5 +235,26 @@ public class Usuario {
 	
 	public void adicionaMensagem(String mensagem){
 		this.mensagens.add(mensagem);
+	}
+	
+	public String getMensagens(){
+
+		String saida = "[";
+		
+		for(String message: mensagens){
+			saida+=message;
+		}
+		
+		return saida+"]";
+				
+	}
+
+	public int getPresencas() {
+
+		return presencas;
+	}
+	
+	public void addPresenca(){
+		this.presencas +=1;
 	}
 }
