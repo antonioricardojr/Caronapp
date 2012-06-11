@@ -31,7 +31,6 @@ public class MinhasCaronas extends Composite {
 	public MinhasCaronas(Perfil perfil) {
 		initWidget(uiBinder.createAndBindUi(this));
 		setPerfil(perfil);
-		perfil.mostraDadosDoPerfil(false);
 		mostraCaronas();
 	}
 

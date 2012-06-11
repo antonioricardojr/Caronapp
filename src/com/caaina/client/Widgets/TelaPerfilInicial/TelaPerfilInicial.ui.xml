@@ -5,9 +5,9 @@
 		
 	</ui:style>
 	<g:HTMLPanel ui:field="telaPerfilInicial">
-		<g:VerticalPanel width="450px" height="85px" ui:field="painelPerfil" spacing="2">
+		<g:VerticalPanel width="580px" height="85px" ui:field="painelPerfil" spacing="2">
 			<g:Cell verticalAlignment="ALIGN_MIDDLE">
-				<g:Label ui:field="nome" text="Nome"/>
+				<g:Label ui:field="nome" text="Nome" width="38px"/>
 			</g:Cell>
 			<g:Cell verticalAlignment="ALIGN_MIDDLE">
 				<g:Label text="Login" ui:field="login"/>

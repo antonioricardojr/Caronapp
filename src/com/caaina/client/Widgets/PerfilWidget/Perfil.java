@@ -42,9 +42,6 @@ public class Perfil extends Composite {
 	@UiField
 	VerticalPanel gridPerfil;
 	@UiField MenuItem buscarCaronasItem;
-	@UiField Label campoNome;
-	@UiField Label campoEndereco;
-	@UiField Label campoEmail;
 	final int INDEX_GRID = 1;
 	final int INDEX_CADASTRA_NOVA_CARONA = 2;
 	private CadastraNovaCarona cadastraNovaCarona;
@@ -61,13 +58,14 @@ public class Perfil extends Composite {
 	}
 
 	public Perfil(Sessao sessao, Sistema sistema) {
+		initWidget(uiBinder.createAndBindUi(this));
 		// Seta as variaveis para inicializacao do perfil
 		setSistema(sistema);
 		setSessao(sessao);
 		setLogin(sessao.getLogin());
 		telaPerfilInicial = new TelaPerfilInicial(this);
+		mostraTela(telaPerfilInicial);
 		setTela(telaPerfilInicial);
-		initWidget(uiBinder.createAndBindUi(this));
 		menuItens = new ArrayList<MenuItem>();
 		menuItens.add(minhasCaronasItem);
 		menuItens.add(cadastrarNovaCaronaItem);
@@ -77,7 +75,6 @@ public class Perfil extends Composite {
 		menuBar.setAutoOpen(true);
 		menuBar.setAnimationEnabled(true);
 		
-		mostraDadosDoPerfil(true);
 		
 		usuario.setCommand(new Command(){
 
@@ -143,20 +140,6 @@ public class Perfil extends Composite {
 			
 		});
 
-	}
-
-	public void mostraDadosDoPerfil(boolean bool) {
-		if(bool == true){
-			Usuario u = sistema.getUsuario(sessao.getLogin());
-			this.campoNome.setText(u.getNome());
-			this.campoEndereco.setText(u.getEndereco());
-			this.campoEmail.setText(u.getEmail());
-		}else{
-			this.campoNome.setText("");
-			this.campoEndereco.setText("");
-			this.campoEmail.setText("");
-		}
-		
 	}
 
 	/**

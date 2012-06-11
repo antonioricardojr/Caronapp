@@ -39,7 +39,6 @@ public class BuscarCarona extends Composite {
 	public BuscarCarona(Perfil perfil) {
 		initWidget(uiBinder.createAndBindUi(this));
 		setPerfil(perfil);
-		perfil.mostraDadosDoPerfil(false);
 	}
 
 	public Perfil getPerfil() {
