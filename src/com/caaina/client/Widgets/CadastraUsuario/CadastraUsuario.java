@@ -1,5 +1,6 @@
 package com.caaina.client.Widgets.CadastraUsuario;
 
+import com.caaina.client.Popups.PopupCadastro.PopupCadastro;
 import com.caaina.client.Widgets.PerfilWidget.Perfil;
 import com.caaina.client.logica.Sistema;
 import com.google.gwt.core.client.GWT;
@@ -87,6 +88,16 @@ public class CadastraUsuario extends Composite {
 		
 		try {
 			sistema.criarUsuario(login, senha, nome, endereco, email);
+			campoLogin.setText("");
+			campoNome.setText("");
+			campoEndereco.setText("");
+			campoEmail.setText("");
+			campoSenha.setText("");
+			
+			PopupCadastro mensagemCadastro = new PopupCadastro();
+			RootPanel.get("mensagemCadastro").add(mensagemCadastro);
+			mensagemCadastro.setVisible(true);
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

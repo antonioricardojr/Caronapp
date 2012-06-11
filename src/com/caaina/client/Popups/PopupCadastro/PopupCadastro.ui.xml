@@ -1,0 +1,13 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		
+	</ui:style>
+	<g:HTMLPanel>
+		<g:SimplePanel ui:field="popupCadastro">
+			<g:Label text="labelMensagem" width="100%" height="100%" ui:field="labelMensagem"/>
+		</g:SimplePanel>
+		<g:Button width="59px" ui:field="botaoConfirma" text="ok" height="27px"/>
+	</g:HTMLPanel>
+</ui:UiBinder> 
