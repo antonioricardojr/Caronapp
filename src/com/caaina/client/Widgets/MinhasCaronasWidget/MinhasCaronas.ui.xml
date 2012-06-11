@@ -5,6 +5,12 @@
 		
 	</ui:style>
 	<g:HTMLPanel>
+		<g:HorizontalPanel spacing="10" width="543px">
+			<g:Button width="135px" ui:field="botaoMinhasCaronas" text="Todas as Caronas"/>
+			<g:Button ui:field="botaoCaronasOferecidas" text="Caronas Oferecidas"/>
+			<g:Button text="Caronas como Caroneiro" width="175px" ui:field="botaoCaronasComoCaroneiro"/>
+		</g:HorizontalPanel>
+		<g:HorizontalPanel width="542px" height="297px" ui:field="painelBotoesCaronas"/>
 		<g:VerticalPanel width="448px" height="297px" ui:field="painelCaronas"/>
 	</g:HTMLPanel>
 </ui:UiBinder> 
