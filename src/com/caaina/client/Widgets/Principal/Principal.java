@@ -9,12 +9,14 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Image;
 
 public class Principal extends Composite {
 
 	private static PrincipalUiBinder uiBinder = GWT
 			.create(PrincipalUiBinder.class);
 	@UiField VerticalPanel principal;
+	@UiField Image logo;
 
 	interface PrincipalUiBinder extends UiBinder<Widget, Principal> {
 	}
@@ -26,7 +28,7 @@ public class Principal extends Composite {
 	
 	public Principal(Sistema sistema) {
 		initWidget(uiBinder.createAndBindUi(this));
-		
+		logo.setUrl("http://i49.tinypic.com/6zsvh2.jpg");
 		
 		logon = new Logon(sistema);
 		cadastra = new CadastraUsuario(sistema);

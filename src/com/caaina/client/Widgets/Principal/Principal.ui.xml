@@ -5,6 +5,10 @@
 		
 	</ui:style>
 	<g:HTMLPanel>
-		<g:VerticalPanel ui:field="principal"/>
+		<g:VerticalPanel ui:field="principal">
+			<g:Cell horizontalAlignment="ALIGN_CENTER">
+				<g:Image ui:field="logo"/>
+			</g:Cell>
+		</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

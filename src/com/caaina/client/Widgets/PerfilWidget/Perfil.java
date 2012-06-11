@@ -65,7 +65,7 @@ public class Perfil extends Composite {
 		setSistema(sistema);
 		setSessao(sessao);
 		setLogin(sessao.getLogin());
-		telaPerfilInicial = new TelaPerfilInicial();
+		telaPerfilInicial = new TelaPerfilInicial(this);
 		setTela(telaPerfilInicial);
 		initWidget(uiBinder.createAndBindUi(this));
 		menuItens = new ArrayList<MenuItem>();
