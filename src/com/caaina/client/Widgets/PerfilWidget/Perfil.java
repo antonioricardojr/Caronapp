@@ -64,7 +64,10 @@ public class Perfil extends Composite {
 		setSessao(sessao);
 		setLogin(sessao.getLogin());
 		telaPerfilInicial = new TelaPerfilInicial(this);
+		
 		mostraTela(telaPerfilInicial);
+		alinhaAEsquerda(telaPerfilInicial);
+		
 		setTela(telaPerfilInicial);
 		menuItens = new ArrayList<MenuItem>();
 		menuItens.add(minhasCaronasItem);
@@ -148,11 +151,17 @@ public class Perfil extends Composite {
 				limpaTela();
 				telaPerfilInicial = new TelaPerfilInicial(Perfil.this);
 				mostraTela(telaPerfilInicial);
+				alinhaAEsquerda(telaPerfilInicial);
 				
 			}
 			
 		});
 
+	}
+
+	private void alinhaAEsquerda(TelaPerfilInicial telaPerfilInicial) {
+		gridPerfil.setCellHorizontalAlignment(telaPerfilInicial, VerticalPanel.ALIGN_LEFT);
+		
 	}
 
 	/**
