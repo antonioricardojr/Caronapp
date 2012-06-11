@@ -12,6 +12,8 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
 
 
 public class MinhasCaronas extends Composite {
@@ -31,7 +33,8 @@ public class MinhasCaronas extends Composite {
 	public MinhasCaronas(Perfil perfil) {
 		initWidget(uiBinder.createAndBindUi(this));
 		setPerfil(perfil);
-		mostraCaronas();
+		botaoMinhasCaronas.setVisible(false);
+		mostraCaronas("todas");
 	}
 
 	public Perfil getPerfil() {
@@ -42,8 +45,21 @@ public class MinhasCaronas extends Composite {
 		this.perfil = perfil;
 	}
 	
-	private void mostraCaronas(){
-		List<String> caronas = getPerfil().getSistema().getUsuario(getPerfil().getLogin()).getCaronas();
+	private void mostraCaronas(String contexto){
+		painelCaronas.clear();
+		if(contexto.equals("todas")){
+			List<String> caronas = getPerfil().getSistema().getUsuario(getPerfil().getLogin()).getCaronas();
+			criaListaDeCaroans(caronas);
+		}else if(contexto.equals("oferecidas")){
+			List<String> caronas = getPerfil().getSistema().getUsuario(getPerfil().getLogin()).getCaronasOferecidas();
+			criaListaDeCaroans(caronas);
+		}else if(contexto.equals("caroneiro")){
+			List<String> caronas = getPerfil().getSistema().getUsuario(getPerfil().getLogin()).getCaronasComoCaroneiro();
+			criaListaDeCaroans(caronas);
+		}
+	}
+	
+	public void criaListaDeCaroans(List<String> caronas){
 		for(String c : caronas){
 			com.caaina.client.logica.Carona carona = null;
 			try {
@@ -54,9 +70,30 @@ public class MinhasCaronas extends Composite {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+	}
 	}
 
 	
 	
+	@UiHandler("botaoCaronasComoCaroneiro")
+	void onBotaoCaronasComoCaroneiroClick(ClickEvent event) {
+		mostraCaronas("caroneiro");
+		botaoCaronasComoCaroneiro.setVisible(false);
+		botaoCaronasOferecidas.setVisible(true);
+		botaoMinhasCaronas.setVisible(true);
+	}
+	@UiHandler("botaoCaronasOferecidas")
+	void onBotaoCaronasOferecidasClick(ClickEvent event) {
+		mostraCaronas("oferecidas");
+		botaoCaronasComoCaroneiro.setVisible(true);
+		botaoCaronasOferecidas.setVisible(false);
+		botaoMinhasCaronas.setVisible(true);
+	}
+	@UiHandler("botaoMinhasCaronas")
+	void onBotaoMinhasCaronasClick(ClickEvent event) {
+		mostraCaronas("todas");
+		botaoCaronasComoCaroneiro.setVisible(true);
+		botaoCaronasOferecidas.setVisible(true);
+		botaoMinhasCaronas.setVisible(false);
+	}
 }

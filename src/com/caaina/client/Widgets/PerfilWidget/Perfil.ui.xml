@@ -5,8 +5,8 @@
 		
 	</ui:style>
 	<g:HTMLPanel width="1024" height="640">
-		<g:VerticalPanel width="788px" ui:field="gridPerfil" spacing="10">
-			<g:MenuBar ui:field="menuBar">
+		<g:VerticalPanel width="1024px" ui:field="gridPerfil" spacing="10">
+			<g:MenuBar ui:field="menuBar" width="1100px">
 					<g:MenuItem ui:field="usuario" text="Usuario">
 						<g:MenuBar vertical="true" ui:field="menuUsuario">
 							<g:MenuItem text="Logout" ui:field="logoutItem"/>
