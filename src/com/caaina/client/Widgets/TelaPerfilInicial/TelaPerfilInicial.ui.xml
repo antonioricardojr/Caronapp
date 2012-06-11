@@ -7,13 +7,14 @@
 	<g:HTMLPanel ui:field="telaPerfilInicial" styleName="stylePerfilInicial">
 		<g:VerticalPanel width="580px" height="85px" ui:field="painelPerfil" spacing="2" styleName="gwt-stylePerfilInicial">
 			<g:Cell verticalAlignment="ALIGN_MIDDLE">
-				<g:Label ui:field="nome" text="Nome" width="38px" styleName="gwt-label"/>
+				<g:Label ui:field="nome" text="Nome" width="576px" styleName="gwt-label"/>
 			</g:Cell>
 			<g:Cell verticalAlignment="ALIGN_MIDDLE">
-				<g:Label text="Login" ui:field="login"/>
+				<g:Label text="Login" ui:field="login" styleName="gwt-label"/>
 			</g:Cell>
+			<g:Label text="Endereco" ui:field="endereco"/>
 			<g:Cell verticalAlignment="ALIGN_MIDDLE">
-				<g:Label text="Email" ui:field="email"/>
+				<g:Label text="Email" ui:field="email" styleName="gwt-label"/>
 			</g:Cell>
 		</g:VerticalPanel>
 	</g:HTMLPanel>

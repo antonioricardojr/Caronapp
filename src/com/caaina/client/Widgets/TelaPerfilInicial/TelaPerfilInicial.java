@@ -20,6 +20,7 @@ public class TelaPerfilInicial extends Composite {
 	@UiField Label nome;
 	@UiField Label login;
 	@UiField Label email;
+	@UiField Label endereco;
 	private Perfil perfil;
 	private Usuario usuario;
 	
@@ -32,9 +33,10 @@ public class TelaPerfilInicial extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 		setPerfil(perfil);
 		usuario = perfil.getSistema().getUsuario(perfil.getSessao().getLogin());
-		nome.setText(usuario.getNome());
-		login.setText(usuario.getLogin());
-		email.setText(usuario.getEmail());
+		login.setText("login: " + usuario.getLogin());
+		nome.setText("Usuario: " + usuario.getNome());
+		endereco.setText("Endereco: " + usuario.getEndereco());
+		email.setText("E-mail: " + usuario.getEmail());
 	}
 
 	public Perfil getPerfil() {

@@ -1,11 +1,14 @@
 .gwt-stylePerfilInicial {
-	background-color: dodgerblue;
+	background-color: lavender;
 }
 .gwt-stylePrincipal {
 	background-color: lavender;
 }
 .gwt-Button {
 	background-color: dodgerblue;
+}
+.gwt-label {
+	font-size: 14px;
 }
 /** Add css rules here for your application. */
 
