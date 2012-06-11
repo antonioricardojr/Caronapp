@@ -49,8 +49,10 @@ public class MinhasCaronas extends Composite {
 	private void mostraCaronas(String contexto){
 		painelCaronas.clear();
 		if(contexto.equals("todas")){
-			List<String> caronas = getPerfil().getSistema().getUsuario(getPerfil().getLogin()).getCaronas();
+			List<String> caronas = getPerfil().getSistema().getUsuario(getPerfil().getLogin()).getCaronasOferecidas();
+			List<String> caronas2 = getPerfil().getSistema().getUsuario(getPerfil().getLogin()).getCaronasComoCaroneiro();
 			criaListaDeCaroans(caronas);
+			criaListaDeCaroans(caronas2);
 		}else if(contexto.equals("oferecidas")){
 			List<String> caronas = getPerfil().getSistema().getUsuario(getPerfil().getLogin()).getCaronasOferecidas();
 			criaListaDeCaroans(caronas);
@@ -66,6 +68,9 @@ public class MinhasCaronas extends Composite {
 			try {
 				carona = getPerfil().getSistema().getCarona(c);
 				CaronaWidget caronaLinha = new CaronaWidget(getPerfil(), carona, "minhas caronas");
+				if(!carona.getCriador().equals(getPerfil().getSessao().getLogin())){
+					caronaLinha.desativaBotaoEditar();
+				}
 				painelCaronas.add(caronaLinha);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
