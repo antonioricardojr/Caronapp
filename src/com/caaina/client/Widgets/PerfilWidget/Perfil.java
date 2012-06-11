@@ -76,6 +76,7 @@ public class Perfil extends Composite {
 		menuBar.setAnimationEnabled(true);
 		
 		
+		
 		usuario.setCommand(new Command(){
 
 			@Override
