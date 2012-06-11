@@ -7,10 +7,12 @@ import com.caaina.client.Widgets.BuscarCarona.BuscarCarona;
 import com.caaina.client.Widgets.CadastraNovaCarona.CadastraNovaCarona;
 import com.caaina.client.Widgets.LogonWidget.Logon;
 import com.caaina.client.Widgets.MinhasCaronasWidget.MinhasCaronas;
+import com.caaina.client.Widgets.PerfilDados.PerfilDados;
 import com.caaina.client.Widgets.Principal.Principal;
 import com.caaina.client.Widgets.TelaPerfilInicial.TelaPerfilInicial;
 import com.caaina.client.logica.Sessao;
 import com.caaina.client.logica.Sistema;
+import com.caaina.client.logica.Usuario;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.Command;
@@ -71,6 +73,12 @@ public class Perfil extends Composite {
 		usuario.setText("Bem Vindo " + getLogin());
 		menuBar.setAutoOpen(true);
 		menuBar.setAnimationEnabled(true);
+		
+		Usuario u = sistema.getUsuario(sessao.getLogin());
+		
+		
+		PerfilDados perfilDados = new PerfilDados(u.getNome(), u.getEndereco(), u.getLogin());
+		RootPanel.get("perfilDados").add(perfilDados);
 		
 		usuario.setCommand(new Command(){
 
