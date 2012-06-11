@@ -21,5 +21,16 @@
 					<g:MenuItemSeparator/>
 				</g:MenuBar>
 		</g:VerticalPanel>
+		<g:LayoutPanel width="250px" height="150px">
+			<g:layer left="0px" width="113px" top="0px" height="84px">
+				<g:Label text="Nome" ui:field="campoNome"/>
+			</g:layer>
+			<g:layer left="0px" width="60px" top="26px" height="18px">
+				<g:Label text="Endereco" ui:field="campoEndereco"/>
+			</g:layer>
+			<g:layer left="0px" width="60px" top="50px" height="18px">
+				<g:Label text="Email" ui:field="campoEmail"/>
+			</g:layer>
+		</g:LayoutPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

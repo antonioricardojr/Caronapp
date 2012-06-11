@@ -7,7 +7,6 @@ import com.caaina.client.Widgets.BuscarCarona.BuscarCarona;
 import com.caaina.client.Widgets.CadastraNovaCarona.CadastraNovaCarona;
 import com.caaina.client.Widgets.LogonWidget.Logon;
 import com.caaina.client.Widgets.MinhasCaronasWidget.MinhasCaronas;
-import com.caaina.client.Widgets.PerfilDados.PerfilDados;
 import com.caaina.client.Widgets.Principal.Principal;
 import com.caaina.client.Widgets.TelaPerfilInicial.TelaPerfilInicial;
 import com.caaina.client.logica.Sessao;
@@ -23,6 +22,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.MenuItem;
 import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Label;
 
 public class Perfil extends Composite {
 
@@ -42,6 +42,9 @@ public class Perfil extends Composite {
 	@UiField
 	VerticalPanel gridPerfil;
 	@UiField MenuItem buscarCaronasItem;
+	@UiField Label campoNome;
+	@UiField Label campoEndereco;
+	@UiField Label campoEmail;
 	final int INDEX_GRID = 1;
 	final int INDEX_CADASTRA_NOVA_CARONA = 2;
 	private CadastraNovaCarona cadastraNovaCarona;
@@ -74,11 +77,7 @@ public class Perfil extends Composite {
 		menuBar.setAutoOpen(true);
 		menuBar.setAnimationEnabled(true);
 		
-		Usuario u = sistema.getUsuario(sessao.getLogin());
-		
-		
-		PerfilDados perfilDados = new PerfilDados(u.getNome(), u.getEndereco(), u.getLogin());
-		RootPanel.get("perfilDados").add(perfilDados);
+		mostraDadosDoPerfil(true);
 		
 		usuario.setCommand(new Command(){
 
@@ -144,6 +143,20 @@ public class Perfil extends Composite {
 			
 		});
 
+	}
+
+	public void mostraDadosDoPerfil(boolean bool) {
+		if(bool == true){
+			Usuario u = sistema.getUsuario(sessao.getLogin());
+			this.campoNome.setText(u.getNome());
+			this.campoEndereco.setText(u.getEndereco());
+			this.campoEmail.setText(u.getEmail());
+		}else{
+			this.campoNome.setText("");
+			this.campoEndereco.setText("");
+			this.campoEmail.setText("");
+		}
+		
 	}
 
 	/**
