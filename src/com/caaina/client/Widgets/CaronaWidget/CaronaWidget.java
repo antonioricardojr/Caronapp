@@ -38,10 +38,10 @@ public class CaronaWidget extends Composite {
 
 	public CaronaWidget(Widget pai, String donoDaCarona, String origem, String destino, String data, String hora, String vagas,String contexto, String idCarona) {
 		initWidget(uiBinder.createAndBindUi(this));
-		this.origem.setText("Origem da Carona: " + origem);
-		this.destino.setText("Destino da Carona: " + destino);
-		this.data.setText("Data da Carona: " + data);
-		this.hora.setText("Hora da Carona: "+ hora);
+		this.origem.setText("Origem: " + origem);
+		this.destino.setText("Destino: " + destino);
+		this.data.setText("Data: " + data);
+		this.hora.setText("Hora: "+ hora);
 		this.vagas.setText("Vagas restantes: " + vagas);
 		this.botaoDonoDaCarona.setText("Carona de: " + donoDaCarona);
 		setContexto(contexto);
@@ -57,6 +57,8 @@ public class CaronaWidget extends Composite {
 		this.contexto = contexto;
 		if(contexto.equals("buscar caronas")){
 			botaoEditar.setText("Solicitar vaga");
+		}else if(contexto.equals("minhas caronas")){
+			contextoMinhasCaronas();
 		}
 				
 	}

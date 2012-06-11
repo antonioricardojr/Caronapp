@@ -7,13 +7,13 @@
 	<g:HTMLPanel>
 		<g:VerticalPanel ui:field="painelCarona" horizontalAlignment="ALIGN_CENTER">
 			<g:Cell width="">
-				<g:HorizontalPanel ui:field="carona" width="857px" verticalAlignment="ALIGN_MIDDLE">
+				<g:HorizontalPanel ui:field="carona" width="972px" verticalAlignment="ALIGN_MIDDLE">
 					<g:Button width="136px" ui:field="botaoDonoDaCarona"/>
 			<g:Cell horizontalAlignment="ALIGN_CENTER">
-				<g:Label text="Origem" ui:field="origem" width="95px"/>
+				<g:Label text="Origem" ui:field="origem" width="143px"/>
 			</g:Cell>
 			<g:Cell horizontalAlignment="ALIGN_CENTER">
-				<g:Label text="Destino" ui:field="destino" width="94px"/>
+				<g:Label text="Destino" ui:field="destino" width="146px"/>
 			</g:Cell>
 			<g:Cell horizontalAlignment="ALIGN_CENTER">
 				<g:Label text="Data" ui:field="data" width="70px"/>
