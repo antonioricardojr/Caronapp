@@ -38,7 +38,7 @@ public class CadastraUsuario extends Composite {
 		setSistema(sistema);
 		
 		
-		//setStyleName("cadastraUsuario");
+		this.setStyleName("styleCadastraUsuario");
 	}
 	
 

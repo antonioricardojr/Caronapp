@@ -4,10 +4,10 @@
 	<ui:style>
 		
 	</ui:style>
-	<g:HTMLPanel ui:field="telaPerfilInicial">
-		<g:VerticalPanel width="580px" height="85px" ui:field="painelPerfil" spacing="2">
+	<g:HTMLPanel ui:field="telaPerfilInicial" styleName="stylePerfilInicial">
+		<g:VerticalPanel width="580px" height="85px" ui:field="painelPerfil" spacing="2" styleName="gwt-stylePerfilInicial">
 			<g:Cell verticalAlignment="ALIGN_MIDDLE">
-				<g:Label ui:field="nome" text="Nome" width="38px"/>
+				<g:Label ui:field="nome" text="Nome" width="38px" styleName="gwt-label"/>
 			</g:Cell>
 			<g:Cell verticalAlignment="ALIGN_MIDDLE">
 				<g:Label text="Login" ui:field="login"/>

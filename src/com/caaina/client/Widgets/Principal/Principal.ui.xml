@@ -4,8 +4,8 @@
 	<ui:style>
 		
 	</ui:style>
-	<g:HTMLPanel>
-		<g:VerticalPanel ui:field="principal">
+	<g:HTMLPanel styleName="gwt-stylePrincipal">
+		<g:VerticalPanel ui:field="principal" styleName="gwt-stylePrincipal">
 			<g:Cell horizontalAlignment="ALIGN_CENTER">
 				<g:Image ui:field="logo"/>
 			</g:Cell>

@@ -5,7 +5,7 @@
 		
 	</ui:style>
 	<g:HTMLPanel>
-		<g:VerticalPanel height="243px" width="270px" horizontalAlignment="ALIGN_CENTER" ui:field="painel">
+		<g:VerticalPanel height="243px" width="270px" horizontalAlignment="ALIGN_CENTER" ui:field="painel" styleName="styleCadastraUsuario">
 			<g:TextBox ui:field="campoLogin" text="Login" width="170px"/>
 			<g:TextBox ui:field="campoNome" text="Nome de usuário" width="170px"/>
 			<g:TextBox ui:field="campoEndereco" text="Endereço" width="170px"/>

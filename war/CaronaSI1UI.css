@@ -1,11 +1,11 @@
+.gwt-stylePerfilInicial {
+	background-color: dodgerblue;
+}
+.gwt-stylePrincipal {
+	background-color: lavender;
+}
+.gwt-Button {
+	background-color: dodgerblue;
+}
 /** Add css rules here for your application. */
 
-body {
-
-color: #000;
-
-background: #fff;
-
-font-weight: bold; /*ponto-e-vírgula é facultativo */
-
-}
