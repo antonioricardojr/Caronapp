@@ -20,7 +20,7 @@ public class Si1ProjectFacade {
 	Sistema S1 = new Sistema();
 
 	public void zerarSistema() {
-		S1.zerarSistema();
+		//S1.zerarSistema();
 		S1 = new Sistema();
 	}
 
@@ -179,7 +179,7 @@ public class Si1ProjectFacade {
 	}
 	
 	public void reiniciarSistema() throws Exception{
-		S1.zerarSistema();		
+		//S1.zerarSistema();		
 	}
 	
 	public void encerrarSistema() throws Exception {

@@ -1180,14 +1180,14 @@ public class Sistema {
 	/**
 	 * Método para apagar informações gravadas do sistema
 	 */
-	public void zerarSistema() {
-		File f = new File("arquivo.xml");
-		if(f.exists()){	
+	//public void zerarSistema() {
+	//	File f = new File("arquivo.xml");
+	//	if(f.exists()){	
 			
-			f.delete();	
-		}
-		
-	}
+	//		f.delete();	
+	//	}
+	//	
+	//}
 
 	/**
 	 * Método para reiniciar o sistema
@@ -1326,6 +1326,52 @@ public class Sistema {
 
 	public void setInteresses(List<Interesse> interesses) {
 		this.interesses = interesses;
+	}
+
+	public List<String> localizarCaronasLista(String id, String origem,
+			String destino) throws OrigemInvalidaException, DestinoInvalidoException {
+		
+		if (origem == null || contemCharInvalidos(origem)) {
+			throw new OrigemInvalidaException();
+		}
+		if (destino == null || contemCharInvalidos(destino)) {
+			throw new DestinoInvalidoException();
+		}
+		List<String> caronasLocalizadas = new LinkedList<String>();
+
+		if (verificaSessao(id)) {
+
+			if (!origem.equals("") && !destino.equals("")) {
+				for (CaronaAbstrata c : caronas) {
+					if (c.getOrigem().equals(origem)
+							&& c.getDestino().equals(destino)) {
+						caronasLocalizadas.add(c.getId());
+					}
+				}
+			} else if (!origem.equals("") && destino.equals("")) {
+				for (CaronaAbstrata c : caronas) {
+					if (c.getOrigem().equals(origem)) {
+						caronasLocalizadas.add(c.getId());
+					}
+				}
+			}
+
+			else if (origem.equals("") && !destino.equals("")) {
+				for (CaronaAbstrata c : caronas) {
+					if (c.getDestino().equals(destino)) {
+						caronasLocalizadas.add(c.getId());
+					}
+				}
+			}
+
+			else if (origem.equals("") && destino.equals("")) {
+				for (CaronaAbstrata c : caronas) {
+					caronasLocalizadas.add(c.getId());
+				}
+			}
+
+		}
+		return caronasLocalizadas;
 	}
 
 }

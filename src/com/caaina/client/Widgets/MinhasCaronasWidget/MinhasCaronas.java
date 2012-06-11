@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.caaina.client.Widgets.CaronaWidget.CaronaWidget;
 import com.caaina.client.Widgets.PerfilWidget.Perfil;
+import com.caaina.client.logica.CaronaAbstrata;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
@@ -61,7 +62,7 @@ public class MinhasCaronas extends Composite {
 	
 	public void criaListaDeCaroans(List<String> caronas){
 		for(String c : caronas){
-			com.caaina.client.logica.Carona carona = null;
+			CaronaAbstrata carona = null;
 			try {
 				carona = getPerfil().getSistema().getCarona(c);
 				CaronaWidget caronaLinha = new CaronaWidget(this,carona.getCriador(), carona.getOrigem(), carona.getDestino(), carona.getData(), carona.getHora(), ""+carona.getVagas(), "minhas caronas", carona.getId());

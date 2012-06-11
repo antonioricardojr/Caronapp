@@ -14,6 +14,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class CadastraUsuario extends Composite {
 
@@ -25,6 +26,7 @@ public class CadastraUsuario extends Composite {
 	@UiField TextBox campoLogin;
 	@UiField TextBox campoEndereco;
 	@UiField Button botaoCadastrar;
+	@UiField VerticalPanel painel;
 	
 	private Sistema sistema;
 

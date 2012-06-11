@@ -140,6 +140,18 @@ public class Perfil extends Composite {
 			}
 			
 		});
+		
+		usuario.setCommand(new Command(){
+
+			@Override
+			public void execute() {
+				limpaTela();
+				telaPerfilInicial = new TelaPerfilInicial(Perfil.this);
+				mostraTela(telaPerfilInicial);
+				
+			}
+			
+		});
 
 	}
 
