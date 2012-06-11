@@ -172,7 +172,7 @@ public class Perfil extends Composite {
 	 * @param w
 	 *            widget a ser mostrado na tela
 	 */
-	private void mostraTela(Widget w) {
+	public void mostraTela(Widget w) {
 		gridPerfil.add(w);
 		gridPerfil.setCellHorizontalAlignment(w, VerticalPanel.ALIGN_CENTER);
 		gridPerfil.setCellVerticalAlignment(w, VerticalPanel.ALIGN_TOP);

@@ -1,8 +1,12 @@
 package com.caaina.client.Widgets.CaronaWidget;
 
+import com.caaina.client.Widgets.AceitarSolicitacao.AceitarSolicitacao;
 import com.caaina.client.Widgets.BuscarCarona.BuscarCarona;
+import com.caaina.client.Widgets.MinhasCaronasWidget.MinhasCaronas;
 import com.caaina.client.Widgets.PerfilWidget.Perfil;
 import com.caaina.client.Widgets.SolicitarCarona.SolicitarCarona;
+import com.caaina.client.logica.CaronaAbstrata;
+import com.caaina.client.logica.Solicitacao;
 import com.caaina.client.logica.Usuario;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -31,22 +35,24 @@ public class CaronaWidget extends Composite {
 	@UiField Button botaoDonoDaCarona;
 	private String contexto;
 	private String idCarona;
-	private Widget pai;
+	private CaronaAbstrata caronaAbs;
+	private Perfil perfil;
 
 	interface CaronaWidgetUiBinder extends UiBinder<Widget, CaronaWidget> {
 	}
 
-	public CaronaWidget(Widget pai, String donoDaCarona, String origem, String destino, String data, String hora, String vagas,String contexto, String idCarona) {
+	public CaronaWidget(Perfil perfil, CaronaAbstrata carona,String contexto) {
 		initWidget(uiBinder.createAndBindUi(this));
-		this.origem.setText("Origem: " + origem);
-		this.destino.setText("Destino: " + destino);
-		this.data.setText("Data: " + data);
-		this.hora.setText("Hora: "+ hora);
-		this.vagas.setText("Vagas restantes: " + vagas);
-		this.botaoDonoDaCarona.setText("Carona de: " + donoDaCarona);
+		setCaronaAbs(carona);
+		this.origem.setText("Origem: " + carona.getOrigem());
+		this.destino.setText("Destino: " + carona.getDestino());
+		this.data.setText("Data: " + carona.getData());
+		this.hora.setText("Hora: "+ carona.getHora());
+		this.vagas.setText("Vagas restantes: " + carona.getVagas());
+		this.botaoDonoDaCarona.setText("Carona de: " + carona.getCriador());
 		setContexto(contexto);
-		setIdCarona(idCarona);
-		setPai(pai);
+		setIdCarona(carona.getId());
+		setPerfil(perfil);
 		}
 
 	public String getContexto() {
@@ -58,7 +64,7 @@ public class CaronaWidget extends Composite {
 		if(contexto.equals("buscar caronas")){
 			botaoEditar.setText("Solicitar vaga");
 		}else if(contexto.equals("minhas caronas")){
-			contextoMinhasCaronas();
+			contextoMinhasCaronasShow();
 		}
 				
 	}
@@ -73,7 +79,24 @@ public class CaronaWidget extends Composite {
 	}
 
 	private void contextoMinhasCaronas() {
-		botaoEditar.setVisible(false);
+		for(Solicitacao s : getCaronaAbs().getSolicitacoes()){
+			if(s.getEstado().equals("pendente")){
+				AceitarSolicitacao aceitar = new AceitarSolicitacao(this, s);
+				painelCarona.add(aceitar);
+			}
+		}
+		
+	}
+
+	private void contextoMinhasCaronasShow() {
+		int contadorPendente = 0;
+		for(Solicitacao s : getCaronaAbs().getSolicitacoes()){
+			if(s.getEstado().equals("pendente")){
+				contadorPendente++;
+			}
+		}
+		botaoEditar.setText("Voce tem " + contadorPendente + " solicitacoes pendentes");
+		
 	}
 
 	private void contextoBuscarCarona() {
@@ -81,17 +104,41 @@ public class CaronaWidget extends Composite {
 		painelCarona.add(solicitar);
 	}
 	
-	public String respostaContextoBuscarCarona(String resposta, String idCarona){
+	public void respostaContextoBuscarCarona(String resposta, String idCarona){
 		if(resposta.equals("sim")){
-			BuscarCarona buscar = (BuscarCarona) this.getPai();
 			try {
-				buscar.getPerfil().getSistema().solicitarVaga(buscar.getPerfil().getSessao().getId(), getIdCarona());
+				getPerfil().getSistema().solicitarVaga(getPerfil().getSessao().getId(), getIdCarona());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		return resposta;
+		
+	}
+	
+	public void respostaContextoMinhasCaronas(String resposta, String idSolicitacao){
+		
+		if(resposta.equals("sim")){
+			try {
+				getPerfil().getSistema().aceitarSolicitacao(getPerfil().getSessao().getId(), idSolicitacao);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			getPerfil().limpaTela();
+			getPerfil().mostraTela(new MinhasCaronas(getPerfil()));
+			
+		}else{
+			try {
+				getPerfil().getSistema().rejeitarSolicitacao(getPerfil().getSessao().getId(), idSolicitacao);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			getPerfil().limpaTela();
+			getPerfil().mostraTela(new MinhasCaronas(getPerfil()));
+		}
 		
 	}
 
@@ -103,19 +150,29 @@ public class CaronaWidget extends Composite {
 		this.idCarona = idCarona;
 	}
 
-	public Widget getPai() {
-		return pai;
+	
+	public void habilitaSolicitacao(boolean b){
+		botaoEditar.setVisible(b);
 	}
 
-	public void setPai(Widget pai) {
-		this.pai = pai;
+	public CaronaAbstrata getCaronaAbs() {
+		return caronaAbs;
 	}
-	
-	public boolean solicitada(){
-		if(contexto.equals("buscar caronas")){
-			BuscarCarona buscar = (BuscarCarona) getPai();
-		}
-		return false;
+
+	public void setCaronaAbs(CaronaAbstrata caronaAbs) {
+		this.caronaAbs = caronaAbs;
+	}
+
+	public Perfil getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
+	}
+
+	public void desativaBotaoEditar() {
+		botaoEditar.setVisible(false);
 		
 	}
 }

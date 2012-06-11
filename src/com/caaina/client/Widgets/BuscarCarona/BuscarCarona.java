@@ -25,13 +25,20 @@ public class BuscarCarona extends Composite {
 
 	private static BuscarCaronaUiBinder uiBinder = GWT
 			.create(BuscarCaronaUiBinder.class);
-	@UiField TextBox campoOrigem;
-	@UiField TextBox campoDestino;
-	@UiField VerticalPanel painelCentral;
-	@UiField FlowPanel painelBuscar;
-	@UiField Button botaoBuscar;
-	@UiField TextBox campoData;
-	@UiField VerticalPanel painelCaronas;
+	@UiField
+	TextBox campoOrigem;
+	@UiField
+	TextBox campoDestino;
+	@UiField
+	VerticalPanel painelCentral;
+	@UiField
+	FlowPanel painelBuscar;
+	@UiField
+	Button botaoBuscar;
+	@UiField
+	TextBox campoData;
+	@UiField
+	VerticalPanel painelCaronas;
 	private Perfil perfil;
 
 	interface BuscarCaronaUiBinder extends UiBinder<Widget, BuscarCarona> {
@@ -49,7 +56,6 @@ public class BuscarCarona extends Composite {
 	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
 	}
-	
 
 	@UiHandler("botaoBuscar")
 	void onBotaoBuscarClick(ClickEvent event) {
@@ -58,18 +64,27 @@ public class BuscarCarona extends Composite {
 		String destino = campoDestino.getText();
 		String data = campoData.getText();
 		try {
-			List<String> caronas = getPerfil().getSistema().localizarCaronasLista(getPerfil().getSessao().getId(), origem, destino);
-			for(String c : caronas){
-				CaronaAbstrata carona =  getPerfil().getSistema().getCarona(c);
-				if(data.equals("")){
-					CaronaWidget linahCarona = new CaronaWidget(this,carona.getCriador(),carona.getOrigem(), carona.getDestino(), carona.getData(), carona.getHora(), "" + carona.getVagas(), "buscar caronas",carona.getId());
+			List<String> caronas = getPerfil().getSistema()
+					.localizarCaronasLista(getPerfil().getSessao().getId(),
+							origem, destino);
+			for (String c : caronas) {
+				CaronaAbstrata carona = getPerfil().getSistema().getCarona(c);
+				if (data.equals("")) {
+					CaronaWidget linahCarona = new CaronaWidget(getPerfil(),
+							carona, "buscar caronas");
+					if(carona.getCriador().equals(perfil.getLogin())){
+						linahCarona.habilitaSolicitacao(false);
+					}
 					painelCaronas.add(linahCarona);
-					painelCaronas.setHorizontalAlignment(DockPanel.ALIGN_CENTER);
-					
-				}else if(carona.getData().equals(data)){
-					CaronaWidget linahCarona = new CaronaWidget(this,carona.getCriador(),carona.getOrigem(), carona.getDestino(), carona.getData(), carona.getHora(), "" + carona.getVagas(), "buscar caronas",carona.getId());
+					painelCaronas
+							.setHorizontalAlignment(DockPanel.ALIGN_CENTER);
+
+				} else if (carona.getData().equals(data)) {
+					CaronaWidget linahCarona = new CaronaWidget(getPerfil(),
+							carona, "buscar caronas");
 					painelCaronas.add(linahCarona);
-					painelCaronas.setHorizontalAlignment(DockPanel.ALIGN_CENTER);
+					painelCaronas
+							.setHorizontalAlignment(DockPanel.ALIGN_CENTER);
 				}
 			}
 		} catch (Exception e) {
@@ -77,14 +92,17 @@ public class BuscarCarona extends Composite {
 			e.printStackTrace();
 		}
 	}
+
 	@UiHandler("campoOrigem")
 	void onCampoOrigemClick(ClickEvent event) {
 		campoOrigem.setText("");
 	}
+
 	@UiHandler("campoDestino")
 	void onCampoDestinoClick(ClickEvent event) {
 		campoDestino.setText("");
 	}
+
 	@UiHandler("campoData")
 	void onCampoDataClick(ClickEvent event) {
 		campoData.setText("");

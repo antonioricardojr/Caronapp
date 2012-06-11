@@ -65,7 +65,7 @@ public class MinhasCaronas extends Composite {
 			CaronaAbstrata carona = null;
 			try {
 				carona = getPerfil().getSistema().getCarona(c);
-				CaronaWidget caronaLinha = new CaronaWidget(this,carona.getCriador(), carona.getOrigem(), carona.getDestino(), carona.getData(), carona.getHora(), ""+carona.getVagas(), "minhas caronas", carona.getId());
+				CaronaWidget caronaLinha = new CaronaWidget(getPerfil(), carona, "minhas caronas");
 				painelCaronas.add(caronaLinha);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
