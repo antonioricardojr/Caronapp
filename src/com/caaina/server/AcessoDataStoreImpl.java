@@ -1,5 +1,7 @@
 package com.caaina.server;
 
+import javax.jdo.PersistenceManager;
+
 import com.caaina.client.AcessoDataStore;
 import com.caaina.client.logica.CaronaAbstrata;
 import com.caaina.client.logica.Sessao;
@@ -15,20 +17,41 @@ public class AcessoDataStoreImpl extends RemoteServiceServlet implements AcessoD
 
 	@Override
 	public boolean gravaSessao(Sessao s) {
-		// TODO Auto-generated method stub
-		return false;
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try{
+			pm.makePersistent(s);
+		}catch (Exception e){
+			return false;
+		}finally{
+			pm.close();
+		}
+		return true;
 	}
 
 	@Override
 	public boolean gravaUsuario(Usuario u) {
-		// TODO Auto-generated method stub
-		return false;
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try{
+			pm.makePersistent(u);
+		}catch (Exception e){
+			return false;
+		}finally{
+			pm.close();
+		}
+		return true;
 	}
 
 	@Override
 	public boolean gravaCaronaAbstrata(CaronaAbstrata c) {
-		// TODO Auto-generated method stub
-		return false;
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try{
+			pm.makePersistent(c);
+		}catch (Exception e){
+			return false;
+		}finally{
+			pm.close();
+		}
+		return true;
 	}
 
 }
