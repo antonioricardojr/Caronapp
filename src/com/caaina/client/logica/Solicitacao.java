@@ -1,14 +1,32 @@
 package com.caaina.client.logica;
 
-public class Solicitacao {
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
 
+import com.google.gwt.user.client.rpc.IsSerializable;
+
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
+public class Solicitacao implements IsSerializable{
+
+	@PrimaryKey
+	@Persistent
 	private String id;
+	
+	@Persistent
 	private String solicitador;
+	
+	@Persistent
 	private String carona;
+	
+	@Persistent
 	private String ponto;
+	
+	@Persistent
 	private String estado;
 	
-	public Solicitacao(String id, String usuario, String carona, String ponto) {
+	public Solicitacao(String id, String usuario, String carona, String ponto)  {
 		
 		this.id = id;
 		this.solicitador = usuario;

@@ -1,15 +1,30 @@
 package com.caaina.client.logica;
 
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
+import com.google.gwt.user.client.rpc.IsSerializable;
+
 /**
  * Classe que representa um sessao do sistema.
  * 
  * @author ANTONIOR
  * 
  */
-public class Sessao {
 
-	private String login;
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
+public class Sessao implements IsSerializable{
+
+	
+	@PrimaryKey
+	@Persistent
 	private String id;
+	
+	@Persistent
+	private String login;
+	
 
 	public Sessao(String login) throws Exception {
 

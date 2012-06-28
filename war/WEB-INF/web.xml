@@ -11,9 +11,19 @@
     <servlet-class>com.caaina.server.GreetingServiceImpl</servlet-class>
   </servlet>
   
+  <servlet>
+    <servlet-name>AcessoDataStore</servlet-name>
+    <servlet-class>com.caaina.server.AcessoDataStoreImpl</servlet-class>
+  </servlet>
+  
   <servlet-mapping>
     <servlet-name>greetServlet</servlet-name>
     <url-pattern>/caronasi1ui/greet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>AcessoDataStore</servlet-name>
+    <url-pattern>/caronasi1ui/acessControl</url-pattern>
   </servlet-mapping>
   
   <!-- Default page to serve -->

@@ -7,11 +7,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
 import com.caaina.client.excecoes.DataInvalidaException;
 import com.caaina.client.excecoes.DestinoInvalidoException;
 import com.caaina.client.excecoes.HoraInvalidaException;
 import com.caaina.client.excecoes.OrigemInvalidaException;
 import com.caaina.client.excecoes.VagaInvalidaException;
+import com.google.gwt.user.client.rpc.IsSerializable;
 
 //import org.jdom2.Element;
 
@@ -25,21 +31,50 @@ import com.caaina.client.excecoes.VagaInvalidaException;
  * 
  */
 
-public abstract class CaronaAbstrata {
-
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
+public abstract class CaronaAbstrata implements IsSerializable{
+	
+	@PrimaryKey
+	@Persistent
 	protected String id;
+	
+	@Persistent
 	protected String origem;
+	
+	@Persistent
 	protected String destino;
+	
+	@Persistent
 	protected String data;
+	
+	@Persistent
 	protected String hora;
+	
+	@Persistent
 	protected Object vagas;
+	
+	@Persistent
 	protected int vagasTotal;
+	
+	@Persistent
 	protected Map<String, String> pontosSugeridos;
+	
+	@Persistent
 	protected String pontoDeEncontro;
+	
+	@Persistent
 	protected List<Solicitacao> solicitacoes;
+	
+	@Persistent
 	protected List<Solicitacao> caroneirosConfirmados;
+	
+	@Persistent
 	protected String criador;
+	
+	@Persistent
 	protected List<Review> reviews;	
+	
+	@Persistent
 	protected boolean isFinalizada;	
 //	protected Xml xmlCreator;
 

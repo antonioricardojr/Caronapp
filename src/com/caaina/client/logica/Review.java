@@ -1,14 +1,28 @@
 package com.caaina.client.logica;
 
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
 import com.caaina.client.excecoes.ReviewInvalidaException;
+import com.google.gwt.user.client.rpc.IsSerializable;
 
 
-
-public class Review {
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
+public class Review implements IsSerializable{
 	
+	@PrimaryKey
+	@Persistent
 	private String id;
+	
+	@Persistent
 	private String loginUsuario;
+	
+	@Persistent
 	private String idCarona;
+	
+	@Persistent
 	private String review;
 	
 	public Review(String id, String loginUsuario, String idCarona, String review)throws Exception {

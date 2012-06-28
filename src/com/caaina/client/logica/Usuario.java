@@ -3,7 +3,13 @@ package com.caaina.client.logica;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
 import com.caaina.client.excecoes.AtributoInvalidoException;
+import com.google.gwt.user.client.rpc.IsSerializable;
 
 //import org.jdom2.Element;
 
@@ -19,21 +25,45 @@ import com.caaina.client.excecoes.AtributoInvalidoException;
  * @author ANTONIOR
  * 
  */
-public class Usuario {
 
+@PersistenceCapable(identityType = IdentityType.APPLICATION)
+public class Usuario implements IsSerializable{
+
+	@PrimaryKey
+	@Persistent
 	private String login;
+	
+	@Persistent
 	private String senha;
+	
+	@Persistent
 	private String nome;
+	
+	@Persistent
 	private String endereco;
+	
+	@Persistent
 	private String email;
 
+	@Persistent
 	private List<String> caronasOferecidas;
+	
+	@Persistent
 	private List<String> caronasComoCaroneiro;
+	
+	@Persistent
 	private int faltas;
+	
+	@Persistent
 	private int presencas;
+	
+	@Persistent
 	private List<String> caronas;
 
+	@Persistent
 	private List<String> amigos;
+	
+	@Persistent
 	private List<String> mensagens;
 	
 //	private Xml xmlCreator;
