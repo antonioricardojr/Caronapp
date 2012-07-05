@@ -1,0 +1,10 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		
+	</ui:style>
+	<g:HTMLPanel>
+		<g:HTML wordWrap="true" ui:field="botaoFacebook" horizontalAlignment="ALIGN_CENTER"><div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div></g:HTML>
+	</g:HTMLPanel>
+</ui:UiBinder> 
