@@ -3,6 +3,7 @@ package com.caaina.client.Widgets.PerfilWidget;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.caaina.client.FacebookLogin.FacebookLogin;
 import com.caaina.client.Widgets.BuscarCarona.BuscarCarona;
 import com.caaina.client.Widgets.CadastraNovaCarona.CadastraNovaCarona;
 import com.caaina.client.Widgets.LogonWidget.Logon;
@@ -53,15 +54,18 @@ public class Perfil extends Composite {
 	private List<MenuItem> menuItens;
 	private static Sessao sessao;
 	private Sistema sistema;
+	private FacebookLogin facebook;
 
 	interface PerfilUiBinder extends UiBinder<Widget, Perfil> {
+		
 	}
-
-	public Perfil(Sessao sessao, Sistema sistema) {
+	
+	public Perfil(Sessao sessao, Sistema sistema, FacebookLogin facebookLogin) {
 		initWidget(uiBinder.createAndBindUi(this));
 		// Seta as variaveis para inicializacao do perfil
 		setSistema(sistema);
 		setSessao(sessao);
+		setFacebook(facebookLogin);
 		setLogin(sessao.getLogin());
 		telaPerfilInicial = new TelaPerfilInicial(this);
 		
@@ -218,6 +222,14 @@ public class Perfil extends Composite {
 
 	public void setSistema(Sistema sistema) {
 		this.sistema = sistema;
+	}
+
+	public FacebookLogin getFacebook() {
+		return facebook;
+	}
+
+	public void setFacebook(FacebookLogin facebook) {
+		this.facebook = facebook;
 	}
 	
 	

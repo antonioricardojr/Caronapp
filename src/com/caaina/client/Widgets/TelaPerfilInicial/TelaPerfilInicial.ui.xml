@@ -16,6 +16,7 @@
 			<g:Cell verticalAlignment="ALIGN_MIDDLE">
 				<g:Label text="Email" ui:field="email" styleName="gwt-label"/>
 			</g:Cell>
+			<g:Label text="Nome Facebook" ui:field="nomeFacebook"/>
 		</g:VerticalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

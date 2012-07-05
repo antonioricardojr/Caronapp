@@ -1,6 +1,7 @@
 package com.caaina.client.Widgets.LogonWidget;
 
 
+import com.caaina.client.FacebookLogin.FacebookLogin;
 import com.caaina.client.Widgets.PerfilWidget.Perfil;
 import com.caaina.client.excecoes.AtributoInvalidoException;
 import com.caaina.client.excecoes.ItemInexistenteException;
@@ -30,15 +31,17 @@ public class Logon extends Composite {
 	@UiField TextBox caixaLogin;
 	@UiField PasswordTextBox caixaSenha;
 	private Sessao sessao;
+	private FacebookLogin facebook;
 
 
 	interface LogonUiBinder extends UiBinder<Widget, Logon> {
 	}
 
-	public Logon(Sistema sistema) {
+	public Logon(Sistema sistema, FacebookLogin facebook) {
 		initWidget(uiBinder.createAndBindUi(this));
 		setStyleName("logon");
 		setSistema(sistema);
+		setFacebook(facebook);
 	}
 
 	public Sistema getSistema() {
@@ -56,7 +59,7 @@ public class Logon extends Composite {
 		logar(login, senha);
 		if(sessao!=null){
 			RootPanel.get("principal").clear();
-			Perfil p = new Perfil(sessao, sistema);
+			Perfil p = new Perfil(sessao, sistema, getFacebook());
 			RootPanel.get("perfil").add(p);
 			
 		}
@@ -86,5 +89,13 @@ public class Logon extends Composite {
 			return sessao;
 		}
 		return sessao;
+	}
+
+	public FacebookLogin getFacebook() {
+		return facebook;
+	}
+
+	public void setFacebook(FacebookLogin facebook) {
+		this.facebook = facebook;
 	}
 }

@@ -1,5 +1,6 @@
 package com.caaina.client.Widgets.Principal;
 
+import com.caaina.client.FacebookLogin.FacebookLogin;
 import com.caaina.client.Widgets.CadastraUsuario.CadastraUsuario;
 import com.caaina.client.Widgets.LogonWidget.Logon;
 import com.caaina.client.logica.Sistema;
@@ -8,6 +9,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -27,12 +29,14 @@ public class Principal extends Composite {
 	private Sistema sistema;
 	private Logon logon;
 	private CadastraUsuario cadastra;
+	private FacebookLogin facebook;
 	
 	public Principal(Sistema sistema) {
 		initWidget(uiBinder.createAndBindUi(this));
 		logo.setUrl("http://i49.tinypic.com/6zsvh2.jpg");
 		
-		logon = new Logon(sistema);
+		facebook = new FacebookLogin();
+		logon = new Logon(sistema, facebook);
 		cadastra = new CadastraUsuario(sistema);
 		HTML link1 = new HTML();
 		link1.setHTML("<a href=\"http://www.facebook.com/antonioricardojr\"/>Desenvolvido por Antonio Ricardo,</a>");
@@ -42,11 +46,14 @@ public class Principal extends Composite {
 		link3.setHTML("<a href=\"http://www.facebook.com/bellezeta\"/>Isabelle Cardoso</a>");
 		this.principal.setCellHorizontalAlignment(cadastra, DockPanel.ALIGN_CENTER);
 		this.principal.add(logon);
+		this.principal.add(facebook);
 		this.principal.add(cadastra);
 		this.principal.add(link1);
 		this.principal.add(link2);
 		this.principal.add(link3);
 		this.principal.setCellHorizontalAlignment(cadastra, DockPanel.ALIGN_CENTER);
+		this.principal.setCellHorizontalAlignment(facebook, DockPanel.ALIGN_CENTER);
+		this.principal.setCellVerticalAlignment(facebook, HasVerticalAlignment.ALIGN_MIDDLE);
 		this.principal.setCellHorizontalAlignment(link1, DockPanel.ALIGN_CENTER);
 		this.principal.setCellHorizontalAlignment(link2, DockPanel.ALIGN_CENTER);
 		this.principal.setCellHorizontalAlignment(link3, DockPanel.ALIGN_CENTER);
