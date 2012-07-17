@@ -57,7 +57,7 @@ public class Principal extends Composite {
 		this.principal.setCellHorizontalAlignment(link1, DockPanel.ALIGN_CENTER);
 		this.principal.setCellHorizontalAlignment(link2, DockPanel.ALIGN_CENTER);
 		this.principal.setCellHorizontalAlignment(link3, DockPanel.ALIGN_CENTER);
-		
+		//FacebookLogin.mostraNome();
 		
 		
 		

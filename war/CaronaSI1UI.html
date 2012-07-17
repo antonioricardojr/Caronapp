@@ -3,83 +3,135 @@
 <!-- browser's rendering engine into                -->
 <!-- "Standards Mode". Replacing this declaration   -->
 <!-- with a "Quirks Mode" doctype is not supported. -->
+<html xmlns:fb="http://ogp.me/ns/fb#">
 
-<html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-    <!--                                                               -->
-    <!-- Consider inlining CSS to reduce the number of requested files -->
-    <!--                                                               -->
-    <link type="text/css" rel="stylesheet" href="CaronaSI1UI.css">
+<!--                                                               -->
+<!-- Consider inlining CSS to reduce the number of requested files -->
+<!--                                                               -->
+<link type="text/css" rel="stylesheet" href="CaronaSI1UI.css">
 
-    <!--                                           -->
-    <!-- Any title is fine                         -->
-    <!--                                           -->
-    <title>Caronapp</title>
-    
-    <!--                                           -->
-    <!-- This script loads your compiled module.   -->
-    <!-- If you add any GWT meta tags, they must   -->
-    <!-- be added before this line.                -->
-    <!--                                           -->
-    <script type="text/javascript" language="javascript" src="caronasi1ui/caronasi1ui.nocache.js"></script>
-  </head>
+<!--                                           -->
+<!-- Any title is fine                         -->
+<!--                                           -->
+<title>Caronapp</title>
 
-  <!--                                           -->
-  <!-- The body can have arbitrary html, or      -->
-  <!-- you can leave the body empty if you want  -->
-  <!-- to create a completely dynamic UI.        -->
-  <!--                                           -->
-  <body>
+<!--                                           -->
+<!-- This script loads your compiled module.   -->
+<!-- If you add any GWT meta tags, they must   -->
+<!-- be added before this line.                -->
+<!--                                           -->
+<script type="text/javascript" language="javascript"
+	src="caronasi1ui/caronasi1ui.nocache.js"></script>
+</head>
 
-    <!-- OPTIONAL: include this if you want history support -->
-    <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position:absolute;width:0;height:0;border:0"></iframe>
-    
-    <!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
-    <noscript>
-      <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
-        Your web browser must have JavaScript enabled
-        in order for this application to display correctly.
-      </div>
-    </noscript>
+<!--                                           -->
+<!-- The body can have arbitrary html, or      -->
+<!-- you can leave the body empty if you want  -->
+<!-- to create a completely dynamic UI.        -->
+<!--                                           -->
+<body>
+	<div id="fb-root"></div>
+	<script>
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId : '391054524289084', // App ID
+				channelUrl : 'caronappbr.appspot.com/', // Channel File
+				status : true, // check login status
+				cookie : true, // enable cookies to allow the server to access the session
+				xfbml : true
+			// parse XFBML
+			});
+			loga();
+			pegaEstadoLogado();
+		};
+		// Load the SDK Asynchronously
+		(function(d) {
+			var js, id = 'facebook-jssdk', ref = d
+					.getElementsByTagName('script')[0];
+			if (d.getElementById(id)) {
+				return;
+			}
+			js = d.createElement('script');
+			js.id = id;
+			js.async = true;
+			js.src = "//connect.facebook.net/pt_BR/all.js";
+			ref.parentNode.insertBefore(js, ref);
+		}(document));
+	</script>
 
-      <div id="fb-root"></div>
-      <script>
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId      : 391054524289084, // App ID
-            channelUrl : 'http://localhost:8080/', // Channel File
-            status     : true, // check login status
-            cookie     : true, // enable cookies to allow the server to access the session
-            xfbml      : true  // parse XFBML
-          });
-        };
-        // Load the SDK Asynchronously
-        (function(d){
-           var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-           if (d.getElementById(id)) {return;}
-           js = d.createElement('script'); js.id = id; js.async = true;
-           js.src = "//connect.facebook.net/en_US/all.js";
-           ref.parentNode.insertBefore(js, ref);
-         }(document));
-        
-        window.leUsuario = function(){
-        	FB.api('/me', function(response) {
-        		  return response.name;
-        		});
-        }
-      </script>
-      
-      
+	<script type="text/javascript">
+		var estadoAtual;
+		var usuarioAtual;
+	
+		function loga() {
+			 FB.login(function(response) {
+				   if (response.authResponse) {
+				     console.log('Welcome!  Fetching your information.... ');
+				     FB.api('/me', function(response) {
+				       alert('Good to see you, ' + response.name + '.');
+				       passaUsuario(response);
+				     });
+				   } else {
+				     console.log('User cancelled login or did not fully authorize.');
+				   }
+				 });
+		}
+		
+		function pegaEstadoLogado(){
+			FB.getLoginStatus(function(response) {
+				  passaEstado(response);
+				 });
+		}
+		
+		function passaEstado(estado){
+			estadoAtual = estado;
+		}
+		
+		function passaUsuario(usuario){
+			usuarioAtual = usuario;
+		}
+		
+		function getEstadoAtual(){
+			return estadoAtual;
+		}
+		
+		function getUsuarioAtual(){
+			return usuarioAtual;
+		}
+		
+		function mostraUsuario(){
+			alert('usuario eh');
+			alert(getUsuarioAtual().name);
+		}
+	</script>
 
-    <table align="center">
-      <tr>
-        <td id="principal"></td>
-        <td id="perfil"></td>
-        <td id="perfilDados"></td>
-        <td id="mensagemCadastro"></td>
-      </tr>
-    </table>
-  </body>
+
+
+	<!-- OPTIONAL: include this if you want history support -->
+	<iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1'
+		style="position: absolute; width: 0; height: 0; border: 0"></iframe>
+
+	<!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
+	<noscript>
+		<div
+			style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+			Your web browser must have JavaScript enabled in order for this
+			application to display correctly.</div>
+	</noscript>
+
+
+
+
+	<table align="center">
+		<tr>
+			<td id="principal"></td>
+			<td id="perfil"></td>
+			<td id="perfilDados"></td>
+			<td id="mensagemCadastro"></td>
+		</tr>
+	</table>
+</body>
 </html>

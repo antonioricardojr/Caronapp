@@ -39,7 +39,7 @@ public class TelaPerfilInicial extends Composite {
 		nome.setText("Usuario: " + usuario.getNome());
 		endereco.setText("Endereco: " + usuario.getEndereco());
 		email.setText("E-mail: " + usuario.getEmail());
-		nomeFacebook.setText(getPerfil().getFacebook().mostraNome());
+		//nomeFacebook.setText("O nome é : " + getPerfil().getFacebook().mostraNome());
 	}
 
 	public Perfil getPerfil() {
