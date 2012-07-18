@@ -9,6 +9,8 @@
 			<g:MenuBar ui:field="menuBar" width="1100px">
 					<g:MenuItem ui:field="usuario" text="Usuario">
 						<g:MenuBar vertical="true" ui:field="menuUsuario">
+							<g:MenuItem text="Configuracoes do Perfil" ui:field="configuracoes"/>
+							<g:MenuItemSeparator/>
 							<g:MenuItem text="Logout" ui:field="logoutItem"/>
 						</g:MenuBar>
 					</g:MenuItem>

@@ -9,5 +9,9 @@ class FacebookUsuario extends JavaScriptObject  {
 	 public final native String getNome() /*-{
 	 	return this.name;
 	 }-*/;
+	 
+	 public final native String getUserID() /*-{
+	 	return this.id;
+	 }-*/;
 
 }

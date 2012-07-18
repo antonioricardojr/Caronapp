@@ -27,23 +27,26 @@ public class FacebookLogin extends Composite {
 
 	}
 
-	
+	@UiHandler("button")
+	void onButtonClick(ClickEvent event) {
+		logar();
+		esperarConectar();
+	}
+
+	private void esperarConectar() {
+
+		FacebookAcesso f = getFacebookAcesso();
+		while (!f.loginStatus().equals("connected")) {
+			f = getFacebookAcesso();
+		}
+		FacebookUsuario u = getFacebookUsuario();
+		button.setText("Logado no Facebook como " + u.getNome());
+
+	}
 
 	public static native void logar() /*-{
 		$wnd.loga();
 	}-*/;
-
-	@UiHandler("button")
-	void onButtonClick(ClickEvent event) {
-
-		FacebookAcesso f = getFacebookAcesso() ;
-		FacebookUsuario u = getFacebookUsuario();
-		if (f.loginStatus().equals("connected")) {
-			button.setText("Logado no Facebook como " + u.getNome());
-		}
-		pegaNome();
-	}
-
 
 	private static native void pegaNome() /*-{
 		$wnd.mostraUsuario();
@@ -53,11 +56,14 @@ public class FacebookLogin extends Composite {
 		return $wnd.getEstadoAtual();
 
 	}-*/;
-	
+
 	private static native FacebookUsuario getFacebookUsuario() /*-{
-	return $wnd.getUsuarioAtual();
+		return $wnd.getUsuarioAtual();
 
-}-*/;
+	}-*/;
 
-	
+	public void mudaTextoBotao(String texto) {
+		button.setText(texto);
+	}
+
 }

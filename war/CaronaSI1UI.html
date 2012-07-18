@@ -44,8 +44,7 @@
 				xfbml : true
 			// parse XFBML
 			});
-			loga();
-			pegaEstadoLogado();
+ 
 		};
 		// Load the SDK Asynchronously
 		(function(d) {
@@ -73,6 +72,7 @@
 				     FB.api('/me', function(response) {
 				       alert('Good to see you, ' + response.name + '.');
 				       passaUsuario(response);
+				       pegaEstadoLogado();
 				     });
 				   } else {
 				     console.log('User cancelled login or did not fully authorize.');

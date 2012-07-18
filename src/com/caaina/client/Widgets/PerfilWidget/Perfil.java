@@ -8,6 +8,7 @@ import com.caaina.client.Widgets.BuscarCarona.BuscarCarona;
 import com.caaina.client.Widgets.CadastraNovaCarona.CadastraNovaCarona;
 import com.caaina.client.Widgets.LogonWidget.Logon;
 import com.caaina.client.Widgets.MinhasCaronasWidget.MinhasCaronas;
+import com.caaina.client.Widgets.PerfilAjustes.PerfilAjustes;
 import com.caaina.client.Widgets.Principal.Principal;
 import com.caaina.client.Widgets.TelaPerfilInicial.TelaPerfilInicial;
 import com.caaina.client.logica.Sessao;
@@ -43,11 +44,13 @@ public class Perfil extends Composite {
 	@UiField
 	VerticalPanel gridPerfil;
 	@UiField MenuItem buscarCaronasItem;
+	@UiField MenuItem configuracoes;
 	final int INDEX_GRID = 1;
 	final int INDEX_CADASTRA_NOVA_CARONA = 2;
 	private CadastraNovaCarona cadastraNovaCarona;
 	private TelaPerfilInicial telaPerfilInicial;
 	private MinhasCaronas minhasCaronas;
+	private PerfilAjustes perfilAjustes;
 	private BuscarCarona buscarCarona;
 	private Widget tela;
 	private String login;
@@ -116,6 +119,18 @@ public class Perfil extends Composite {
 				cadastraNovaCarona = new CadastraNovaCarona(Perfil.this);
 				cadastrarNovaCaronaItem.setEnabled(false);
 				mostraTela(cadastraNovaCarona);
+
+			}
+		});
+		
+		configuracoes.setCommand(new Command() {
+			@Override
+			public void execute() {
+
+				limpaTela();
+				perfilAjustes = new PerfilAjustes(Perfil.this);
+				configuracoes.setEnabled(false);
+				mostraTela(perfilAjustes);
 
 			}
 		});
@@ -230,6 +245,14 @@ public class Perfil extends Composite {
 
 	public void setFacebook(FacebookLogin facebook) {
 		this.facebook = facebook;
+	}
+
+	public PerfilAjustes getPerfilAjustes() {
+		return perfilAjustes;
+	}
+
+	public void setPerfilAjustes(PerfilAjustes perfilAjustes) {
+		this.perfilAjustes = perfilAjustes;
 	}
 	
 	
