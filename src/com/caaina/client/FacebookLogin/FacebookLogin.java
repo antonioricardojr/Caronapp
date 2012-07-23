@@ -36,16 +36,20 @@ public class FacebookLogin extends Composite {
 	private void esperarConectar() {
 
 		FacebookAcesso f = getFacebookAcesso();
+		FacebookUsuario u = getFacebookUsuario();
 		while (!f.loginStatus().equals("connected")) {
 			f = getFacebookAcesso();
 		}
-		FacebookUsuario u = getFacebookUsuario();
-		button.setText("Logado no Facebook como " + u.getNome());
+		if(u.getNome().equals("nao conectado")){
+			button.setText("Clique para Sincronizar com o Facebook ");
+		}else{
+			button.setText("Logado no Facebook como " + u.getNome());
+		}
 
 	}
 
 	public static native void logar() /*-{
-		$wnd.loga();
+			$wnd.loga();	
 	}-*/;
 
 	private static native void pegaNome() /*-{

@@ -35,6 +35,13 @@
 <body>
 	<div id="fb-root"></div>
 	<script>
+		var estadoAtual = {
+			'status': 'not connected'
+		};
+		var usuarioAtual = {
+				'name': 'nao conectado'
+		};
+	
 		window.fbAsyncInit = function() {
 			FB.init({
 				appId : '391054524289084', // App ID
@@ -44,6 +51,7 @@
 				xfbml : true
 			// parse XFBML
 			});
+			pegaEstadoLogado();
  
 		};
 		// Load the SDK Asynchronously
@@ -59,20 +67,16 @@
 			js.src = "//connect.facebook.net/pt_BR/all.js";
 			ref.parentNode.insertBefore(js, ref);
 		}(document));
-	</script>
 
-	<script type="text/javascript">
-		var estadoAtual;
-		var usuarioAtual;
+		
 	
 		function loga() {
 			 FB.login(function(response) {
 				   if (response.authResponse) {
 				     console.log('Welcome!  Fetching your information.... ');
 				     FB.api('/me', function(response) {
-				       alert('Good to see you, ' + response.name + '.');
-				       passaUsuario(response);
-				       pegaEstadoLogado();
+				      	 pegaEstadoLogado();
+				      	 passaUsuario(response);
 				     });
 				   } else {
 				     console.log('User cancelled login or did not fully authorize.');

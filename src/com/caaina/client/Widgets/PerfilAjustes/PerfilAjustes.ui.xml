@@ -1,0 +1,32 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		
+	</ui:style>
+	<g:HTMLPanel>
+		<g:VerticalPanel width="448px" height="139px">
+			<g:Label text="Configuracoes do Perfil" width="159px" height="32px"/>
+			<g:HorizontalPanel ui:field="linhaNome" spacing="10">
+				<g:Label text="Nome:" ui:field="campoNome" width="65"/>
+				<g:Label text="New Label" ui:field="nomeLabel"/>
+			</g:HorizontalPanel>
+			<g:HorizontalPanel ui:field="linhaEndereco" spacing="10">
+				<g:Cell verticalAlignment="ALIGN_MIDDLE">
+					<g:Label text="Endereco:" width="65px"/>
+				</g:Cell>
+				<g:TextBox width="365px" ui:field="campoEndereco"/>
+			</g:HorizontalPanel>
+			<g:HorizontalPanel ui:field="linhaEmail" spacing="10">
+				<g:Cell verticalAlignment="ALIGN_MIDDLE">
+					<g:Label text="Email:" width="65"/>
+				</g:Cell>
+				<g:TextBox width="261px" ui:field="campoEmail"/>
+			</g:HorizontalPanel>
+			<g:HorizontalPanel ui:field="linhaFacebook" spacing="10">
+				<g:Label text="Facebook Connect:"/>
+			</g:HorizontalPanel>
+			<g:Button ui:field="botaoSalvar" text="Salvar"/>
+		</g:VerticalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 
