@@ -69,5 +69,19 @@ public class FacebookLogin extends Composite {
 	public void mudaTextoBotao(String texto) {
 		button.setText(texto);
 	}
+	
+	public boolean estaConectado(){
+		FacebookAcesso f = getFacebookAcesso();
+		if(f.loginStatus().equals("connected")){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	public String getIdFacebook(){
+		FacebookUsuario u = getFacebookUsuario();
+		return u.getUserID();
+	}
 
 }

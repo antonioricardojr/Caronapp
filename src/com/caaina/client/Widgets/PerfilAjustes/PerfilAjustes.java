@@ -18,6 +18,7 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.logical.shared.CloseHandler;
 
 public class PerfilAjustes extends Composite {
 
@@ -84,5 +85,13 @@ public class PerfilAjustes extends Composite {
 			p.add(menssagem);
 			p.show();
 		}
+		if(getFacebook().estaConectado()){
+			getPerfil().getSistema().getUsuario(getPerfil().getLogin()).setIdFacebook(getFacebook().getIdFacebook());
+		}
+		PopupPanel p = new PopupPanel();
+		HTML menssagem = new HTML("Configuracoes Salvas");
+		p.add(menssagem);
+		p.show();
+		getPerfil().limpaTela();
 	}
 }
