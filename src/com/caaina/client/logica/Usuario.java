@@ -66,6 +66,9 @@ public class Usuario implements IsSerializable{
 	@Persistent
 	private List<String> mensagens;
 	
+	@Persistent
+	private String idFacebook;
+	
 //	private Xml xmlCreator;
 	
 
@@ -286,5 +289,13 @@ public class Usuario implements IsSerializable{
 	
 	public void addPresenca(){
 		this.presencas +=1;
+	}
+
+	public String getIdFacebook() {
+		return idFacebook;
+	}
+
+	public void setIdFacebook(String idFacebook) {
+		this.idFacebook = idFacebook;
 	}
 }
