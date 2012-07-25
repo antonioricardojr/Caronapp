@@ -1373,5 +1373,19 @@ public class Sistema {
 		}
 		return caronasLocalizadas;
 	}
+	
+	public String[] pegaUsuarioFacebook(String id){
+		String[] resp = new String[2];
+		resp[0] = "";
+		resp[1] = "";
+		for(Usuario u : getUsuarios()){
+			if(u.getIdFacebook().equals(id)){
+				resp[0] = u.getLogin();
+				resp[1] = u.getSenha();
+				return resp;
+			}
+		}
+		return resp;
+	}
 
 }

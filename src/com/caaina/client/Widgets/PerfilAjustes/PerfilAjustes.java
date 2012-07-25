@@ -71,27 +71,16 @@ public class PerfilAjustes extends Composite {
 		try {
 			getPerfil().getSistema().getUsuario(getPerfil().getLogin()).setEndereco(campoEndereco.getText());
 		} catch (Exception e) {
-			PopupPanel p = new PopupPanel();
-			HTML menssagem = new HTML("Endereço inválido");
-			p.add(menssagem);
-			p.show();
+			
 		}
 		
 		try {
 			getPerfil().getSistema().getUsuario(getPerfil().getLogin()).setEmail(campoEmail.getText());
 		} catch (Exception e) {
-			PopupPanel p = new PopupPanel();
-			HTML menssagem = new HTML("Email inválido");
-			p.add(menssagem);
-			p.show();
+			
 		}
 		if(getFacebook().estaConectado()){
 			getPerfil().getSistema().getUsuario(getPerfil().getLogin()).setIdFacebook(getFacebook().getIdFacebook());
 		}
-		PopupPanel p = new PopupPanel();
-		HTML menssagem = new HTML("Configuracoes Salvas");
-		p.add(menssagem);
-		p.show();
-		getPerfil().limpaTela();
 	}
 }

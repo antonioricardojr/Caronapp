@@ -23,7 +23,7 @@
 				</g:Cell>
 				<g:TextBox width="385px" ui:field="campoEmail"/>
 			</g:HorizontalPanel>
-			<g:HorizontalPanel ui:field="linhaFacebook" spacing="10" width="92px">
+			<g:HorizontalPanel ui:field="linhaFacebook" spacing="10" width="449px">
 				<g:Label text="Facebook:"/>
 			</g:HorizontalPanel>
 			<g:Cell horizontalAlignment="ALIGN_CENTER">

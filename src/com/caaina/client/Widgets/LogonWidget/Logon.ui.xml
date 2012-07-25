@@ -22,5 +22,6 @@
 				</g:customCell>
 			</g:row>
 		</g:Grid>
+		<g:Button width="474px" ui:field="loginFacebook" text="Logar Com o Facebook"/>
 	</g:HTMLPanel>
 </ui:UiBinder> 

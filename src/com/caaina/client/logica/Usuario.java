@@ -80,6 +80,7 @@ public class Usuario implements IsSerializable{
 		setNome(nome);
 		setEndereco(endereco);
 		setEmail(email);
+		setIdFacebook("");
 		faltas = 0;
 		caronasOferecidas = new ArrayList<String>();
 		caronasComoCaroneiro = new ArrayList<String>();

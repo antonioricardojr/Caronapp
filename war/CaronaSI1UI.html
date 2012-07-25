@@ -39,7 +39,8 @@
 			'status': 'not connected'
 		};
 		var usuarioAtual = {
-				'name': 'nao conectado'
+				'name': 'nao conectado',
+				'id' : 'nao conectado'
 		};
 	
 		window.fbAsyncInit = function() {
@@ -77,6 +78,7 @@
 				     FB.api('/me', function(response) {
 				      	 pegaEstadoLogado();
 				      	 passaUsuario(response);
+				      	 alert('Conectado como ' + response.name )
 				     });
 				   } else {
 				     console.log('User cancelled login or did not fully authorize.');

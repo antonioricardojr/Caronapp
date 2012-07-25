@@ -1,6 +1,8 @@
 package com.caaina.client.Widgets.LogonWidget;
 
 
+
+
 import com.caaina.client.FacebookLogin.FacebookLogin;
 import com.caaina.client.Widgets.PerfilWidget.Perfil;
 import com.caaina.client.excecoes.AtributoInvalidoException;
@@ -9,6 +11,7 @@ import com.caaina.client.logica.Sessao;
 import com.caaina.client.logica.Sistema;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.uibinder.client.UiField;
@@ -30,6 +33,7 @@ public class Logon extends Composite {
 	@UiField Grid gridCentral;
 	@UiField TextBox caixaLogin;
 	@UiField PasswordTextBox caixaSenha;
+	@UiField Button loginFacebook;
 	private Sessao sessao;
 	private FacebookLogin facebook;
 
@@ -42,6 +46,8 @@ public class Logon extends Composite {
 		setStyleName("logon");
 		setSistema(sistema);
 		setFacebook(facebook);
+		getFacebook().setVisible(false);
+		
 	}
 
 	public Sistema getSistema() {
@@ -97,5 +103,36 @@ public class Logon extends Composite {
 
 	public void setFacebook(FacebookLogin facebook) {
 		this.facebook = facebook;
+	}
+	
+
+	@UiHandler("loginFacebook")
+	void onLoginFacebookClick(ClickEvent event) {
+		getFacebook().logar();
+		
+		final Timer t = new Timer(){
+
+			@Override
+			public void run() {
+				if(!getFacebook().getIdFacebook().equals("nao conectado")){
+					String[] login = getSistema().pegaUsuarioFacebook(getFacebook().getIdFacebook());
+					if(!login[0].equals("")){
+						logar(login[0], login[1]);
+						if(sessao!=null){
+							RootPanel.get("principal").clear();
+							Perfil p = new Perfil(sessao, sistema, getFacebook());
+							RootPanel.get("perfil").add(p);
+						}
+					}else{
+						loginFacebook.setText("Usuario do Facebook nao associado");
+					}
+				}else{
+					this.schedule(2000);
+				}
+				
+			}
+			
+		};
+		t.schedule(2000);
 	}
 }
